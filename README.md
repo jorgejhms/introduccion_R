@@ -43,3 +43,7 @@
 9. Visualización de datos
     1. Paquete ggplot
 
+## Referencias
+
+* [Curso Geek for Geeks](https://www.geeksforgeeks.org/r-tutorial/)
+* [Tufte Handouts](https://rstudio.github.io/tufte/)
