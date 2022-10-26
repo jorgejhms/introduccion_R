@@ -1,0 +1,7 @@
+---
+title: "¿Qué es R?"
+author: "Jorge Meneses"
+output:
+  tufte::tufte_handout: default
+  tufte::tufte_html: default
+---
