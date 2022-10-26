@@ -1,0 +1,31 @@
+---
+title: "Conociendo Rstudio"
+author: "Jorge Meneses"
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout: default
+---
+
+Rstudio es la principal aplicación para usar R. En esta sesión empezaremos por conocer la interface y como podemos utilizarla
+
+# La consola de R
+
+```{r fig.margin = TRUE, echo=FALSE, fig.cap="Consola R"}
+knitr::include_graphics("../public/img/02 - consola R.png")
+```
+
+La consola de R es...
+
+## Probando algunas instrucciones
+
+# El editor de código
+
+```{r fig.margin = TRUE, echo=FALSE, fig.cap="Editor de código"}
+knitr::include_graphics("../public/img/02 - editor codigo.png")
+```
+
+El editor de código será nuestro principal espacio de trabajo. Aquí podemos escribir todas las instrucciones para realizar nuestros análisis y reportes. Desde el editor podemos enviar a la consola línea por línea de código (para ir probando su ejecución), o el archivo completo
+
+# El panel del Entorno
+
+# El panel de ayuda, gráficos (plots), archivos
