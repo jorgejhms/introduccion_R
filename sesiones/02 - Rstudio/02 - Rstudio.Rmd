@@ -6,12 +6,18 @@ output:
   tufte::tufte_handout: default
 ---
 
-Rstudio es la principal aplicación para usar R. En esta sesión empezaremos por conocer la interface y como podemos utilizarla
+Rstudio es la principal aplicación para usar R. En esta sesión empezaremos por conocer la interface y como podemos utilizarla.
+
+RStudio tiene las siguientes áreas claves:
+
+-   El área de trabajo o workspace: donde escribimos nuestros códigos
+-   El ambiente o Environment donde almacenamos los objetos que vamos creando como tablas, bases de datos o funciones.
+-   La consola donde se presenta los resultados de las operaciones que comandamos.
 
 # La consola de R
 
 ```{r fig.margin = TRUE, echo=FALSE, fig.cap="Consola R"}
-knitr::include_graphics("../public/img/02 - consola R.png")
+knitr::include_graphics(".../public/img/02 - consola R.png")
 ```
 
 La consola de R es...
