@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r, echo=FALSE}
-here::here("introduccion_R/sesiones/01 - que es R/que es R.Rmd")
+here::i_am("introduccion_R/sesiones/01 - que es R/que es R.Rmd")
 ```
 
 # Introducción
@@ -46,7 +46,7 @@ Actualmente existen otros softwares de programación como Python, Stata o SPSS. 
 ## Rstudio
 
 ```{r fig.margin = TRUE, echo=FALSE, fig.cap="Rstudio"}
-knitr::include_graphics(here::here("public/img/01 - Rstudio.png"))
+knitr::include_graphics(here::here("introduccion_R/public/img/01 - Rstudio.png"))
 ```
 
 Rstudio es el software más usado para trabajar R. Es lo que se conoce como un **IDE** (Integrated Development Environment, o Entorno de Desarrollo Integrado). Esta aplicación esta diseñada para facilitar el desarrollo de análisis y reportes en R.
@@ -64,11 +64,11 @@ Hay que ingresar a la siguiente página web del proyecto: <https://cran.r-projec
 En la página apareceran vínculos para los diferentes sistemas operativos (Windows, Mac, Linux). Escoger el operador que corresponda.
 
 ```{r fig.margin = TRUE, echo=FALSE, fig.cap="DescargarR"}
-knitr::include_graphics(here::here("public/img/01 - descargarR.png"))
+knitr::include_graphics(here::here("introduccion_R/public/img/01 - descargarR.png"))
 ```
 
 ```{r fig.margin = TRUE, echo=FALSE, fig.cap="DescargarR"}
-knitr::include_graphics(here::here("public/img/01 - descargarR2.png"))
+knitr::include_graphics(here::here("introduccion_R/public/img/01 - descargarR2.png"))
 ```
 
 **Descargar e instalar Rstudio**
@@ -78,5 +78,5 @@ Hay que ingresar a la siguiente página web: <https://posit.co/download/rstudio-
 En la página apareceran vínculos para los diferentes sistemas operativos (Windows, Mac, Linux). Escoger el operador que corresponda.
 
 ```{r fig.margin = TRUE, echo=FALSE, fig.cap="DescargarR"}
-knitr::include_graphics(here::here("public/img/01 - descargarRStudio.png"))
+knitr::include_graphics(here::here("introduccion_R/public/img/01 - descargarRStudio.png"))
 ```
