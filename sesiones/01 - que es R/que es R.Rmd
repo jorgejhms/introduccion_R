@@ -4,11 +4,11 @@ author:
   - "Jorge Meneses"
   - "Paulo Peña"
 output:
-  tufte::tufte_handout: default
   tufte::tufte_html: default
+  tufte::tufte_handout: default
 ---
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, results='hide', message=FALSE}
 here::i_am("introduccion_R/sesiones/01 - que es R/que es R.Rmd")
 ```
 
@@ -63,11 +63,11 @@ Hay que ingresar a la siguiente página web del proyecto: <https://cran.r-projec
 
 En la página apareceran vínculos para los diferentes sistemas operativos (Windows, Mac, Linux). Escoger el operador que corresponda.
 
-```{r fig.margin = TRUE, echo=FALSE, fig.cap="DescargarR"}
+```{r fig.margin = F, echo=FALSE, fig.cap="DescargarR Parte 1"}
 knitr::include_graphics(here::here("introduccion_R/public/img/01 - descargarR.png"))
 ```
 
-```{r fig.margin = TRUE, echo=FALSE, fig.cap="DescargarR"}
+```{r fig.margin = F, echo=FALSE, fig.cap="DescargarR Parte 2"}
 knitr::include_graphics(here::here("introduccion_R/public/img/01 - descargarR2.png"))
 ```
 
@@ -77,6 +77,6 @@ Hay que ingresar a la siguiente página web: <https://posit.co/download/rstudio-
 
 En la página apareceran vínculos para los diferentes sistemas operativos (Windows, Mac, Linux). Escoger el operador que corresponda.
 
-```{r fig.margin = TRUE, echo=FALSE, fig.cap="DescargarR"}
+```{r fig.margin = F, echo=FALSE, fig.cap="Descargar RStudio"}
 knitr::include_graphics(here::here("introduccion_R/public/img/01 - descargarRStudio.png"))
 ```
