@@ -1,18 +1,15 @@
 ---
 title: "Introducción: ¿Qué es R?"
 author:
-  - "Jorge Meneses"
-  - "Paulo Peña"
-output:
-  tufte::tufte_html: default
-  tufte::tufte_handout: default
+  - "Jorge Meneses y Paulo Peña"
+output: 
+  ioslides_presentation:
+    incremental: true
+    widescreen: true
 ---
 
-```{r, echo=FALSE, results='hide', message=FALSE}
-here::i_am("introduccion_R/sesiones/01 - que es R/que es R.Rmd")
-```
 
-# Introducción
+## Introducción
 
 -   Curso práctico: En cada sesión habrán ejercicios a resolver
 -   Sesiones de 45 minutos
@@ -25,11 +22,12 @@ here::i_am("introduccion_R/sesiones/01 - que es R/que es R.Rmd")
 -   Generación de reportes (Rmarkdown)
 -   Visualización de datos
 
-# ¿Qué es R?
+## ¿Qué es R?
 
 R es un **lenguaje de programación** de **código abierto** ampliamente usado para el análisis de datos y la estadística. Está disponible para Windows, macOS y Linux.
 
 -   **¿Qué implica un lenguaje de programación?:** Un lenguaje de programación son instrucciones dadas a una computadora para dar una tarea.
+
 
 ## ¿Porque usar R?
 
@@ -43,40 +41,43 @@ R es un **lenguaje de programación** de **código abierto** ampliamente usado p
 
 Actualmente existen otros softwares de programación como Python, Stata o SPSS. La gran ventaja de R sobre estos programas es la facilidad de manejar grandes cantidades de datos en diferentes formatos, sus poderosas herramientas estadísticas y la comunidad global.
 
-## Rstudio
+## Rstudio {.smaller}
 
-```{r fig.margin = TRUE, echo=FALSE, fig.cap="Rstudio"}
-knitr::include_graphics(here::here("introduccion_R/public/img/01 - Rstudio.png"))
-```
+<div class="columns-2">
 
 Rstudio es el software más usado para trabajar R. Es lo que se conoce como un **IDE** (Integrated Development Environment, o Entorno de Desarrollo Integrado). Esta aplicación esta diseñada para facilitar el desarrollo de análisis y reportes en R.
 
-# Instalar R y Rstudio
+![](./../../public/img/01 - Rstudio.png){width=100%}
+</div>
+
+
+## Instalar R y Rstudio
 
 Para seguir con el curso práctico requerimos la instalación de R y Rstudio en nuestras computadoras. La instalación dependerá del sistema operativo que usemos.
 
-## Instalar R y Rstudio en Windows
 
-**Descargar e instalar R**
+## Descargar e instalar R
 
 Hay que ingresar a la siguiente página web del proyecto: <https://cran.r-project.org/>
 
 En la página apareceran vínculos para los diferentes sistemas operativos (Windows, Mac, Linux). Escoger el operador que corresponda.
 
-```{r fig.margin = F, echo=FALSE, fig.cap="DescargarR Parte 1"}
-knitr::include_graphics(here::here("introduccion_R/public/img/01 - descargarR.png"))
-```
+---
 
-```{r fig.margin = F, echo=FALSE, fig.cap="DescargarR Parte 2"}
-knitr::include_graphics(here::here("introduccion_R/public/img/01 - descargarR2.png"))
-```
+![Descargar R](./../../public/img/01 - descargarR.png){width=100%}
 
-**Descargar e instalar Rstudio**
+
+---
+
+![Descargar R](./../../public/img/01 - descargarR2.png){width=100%}
+
+
+## Descargar e instalar Rstudio
 
 Hay que ingresar a la siguiente página web: <https://posit.co/download/rstudio-desktop/>. Si aun no se ha instalado R en la computadora, en esta página también se puede descargar el software R.
 
 En la página apareceran vínculos para los diferentes sistemas operativos (Windows, Mac, Linux). Escoger el operador que corresponda.
 
-```{r fig.margin = F, echo=FALSE, fig.cap="Descargar RStudio"}
-knitr::include_graphics(here::here("introduccion_R/public/img/01 - descargarRStudio.png"))
-```
+---
+
+![Descargar Rstudio](./../../public/img/01 - descargarRstudio.png){width=100%}
