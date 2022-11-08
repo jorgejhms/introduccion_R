@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.8)  8 NOV 2022 11:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.8)  8 NOV 2022 11:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**"C:/Users/Paulo/Documents/GitHub/introduccion_R/sesiones/01 - que es R/que-es
--R.tex"
+**"C:/Users/Paulo/Documents/GitHub/introduccion_R/sesiones/02 - Rstudio/02---Rs
+tudio.tex"
 
-(C:/Users/Paulo/Documents/GitHub/introduccion_R/sesiones/01 - que es R/que-es-R
-.tex
+(C:/Users/Paulo/Documents/GitHub/introduccion_R/sesiones/02 - Rstudio/02---Rstu
+dio.tex
 LaTeX2e <2022-06-01> patch level 5
 L3 programming layer <2022-10-26>
 (C:\Users\Paulo\AppData\Local\Programs\MiKTeX\tex/latex/tufte-latex\tufte-hando
@@ -370,7 +370,7 @@ LaTeX Info: Redefining \cite on input line 694.
 (C:\Users\Paulo\AppData\Local\Programs\MiKTeX\tex/latex/natbib\bibentry.sty
 Package: bibentry 2007/10/30 1.5 (PWD)
 )
-No file que-es-R.bbl.
+No file 02---Rstudio.bbl.
 \c@@tufte@num@bibkeys=\count282
 (C:\Users\Paulo\AppData\Local\Programs\MiKTeX\tex/latex/sauerj\optparams.sty
 Package: optparams 2004/08/14 v0.9 multiple optional parameters in macros
@@ -779,9 +779,8 @@ File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count310
 \l__pdf_internal_box=\box105
 )
-(C:/Users/Paulo/Documents/GitHub/introduccion_R/sesiones/01 - que es R\que-es-R
-.aux)
-\openout1 = `que-es-R.aux'.
+No file 02---Rstudio.aux.
+\openout1 = `02---Rstudio.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
 LaTeX Font Info:    ... okay on input line 71.
@@ -802,14 +801,8 @@ LaTeX Font Info:    ... okay on input line 71.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 71.
 LaTeX Font Info:    ... okay on input line 71.
 Package hyperref Info: Link coloring OFF on input line 71.
-
-(C:/Users/Paulo/Documents/GitHub/introduccion_R/sesiones/01 - que es R\que-es-R
-.out)
-(C:/Users/Paulo/Documents/GitHub/introduccion_R/sesiones/01 - que es R\que-es-R
-.out)
 \@outlinefile=\write3
-\openout3 = `que-es-R.out'.
-
+\openout3 = `02---Rstudio.out'.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -885,259 +878,418 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
                     \egroup \egroup $\egroup 
 l.73 \maketitle
                
-? R
-OK, entering \nonstopmode...
-! Extra }, or forgotten \endgroup.
+? Y
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, E to edit your file,
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? 1
+
 \endtabular ->\crcr \egroup 
                             \egroup $\egroup 
 l.73 \maketitle
                
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten \endgroup.
-\endtabular ->\crcr \egroup \egroup 
-                                    $\egroup 
+? 9
+<argument> tabu
+               lar
 l.73 \maketitle
                
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+? 9
+
+\end  ...dafter \endgroup \if@endpe \@doendpe \fi 
+                                                  \UseHook {env/#1/after}\if...
+l.73 \maketitle
+               
+? 9
+<argument> tab
+              ular
+l.73 \maketitle
+               
+? 9
+
+\end  ...endpe \@doendpe \fi \UseHook {env/#1/afte
+                                                  r}\if@ignore \@ignorefalse...
+l.73 \maketitle
+               
+? 9
+
+\and  ->\end {tabular}\hskip 1e
+                               m \@plus .17fil\begin {tabular}[t]{c}
+l.73 \maketitle
+               
+? 9
+
+\and  ->\end {tabular}\hskip 1em \@plus .17fil
+                                              \begin {tabular}[t]{c}
+l.73 \maketitle
+               
+? 9
+
+\and  ...r}\hskip 1em \@plus .17fil\begin {tabular
+                                                  }[t]{c}
+l.73 \maketitle
+               
+? 9
+
+\@author ->Jorge Meneses \and Pa
+                                ulo Peña
+l.73 \maketitle
+               
+? 9
+
+\@author ->Jorge Meneses \and Paulo Peña
+                                         
+l.73 \maketitle
+               
+? 9
+
+\maketitle ...@date \endgroup \thispagestyle {plai
+                                                  n}\tuftebreak \@afterinden...
+l.73 \maketitle
+               
+? 9
+l.77 
+     
+? 9
+l.78 Rstudio e
+              s la principal aplicación para usar R. En esta sesión
+? 9
+l.78 Rstudio es la prin
+                       cipal aplicación para usar R. En esta sesión
+? 9
+l.78 Rstudio es la principal apl
+                                icación para usar R. En esta sesión
+? 9
+l.78 Rstudio es la principal aplicación 
+                                         para usar R. En esta sesión
+? 9
+l.78 Rstudio es la principal aplicación para usar
+                                                   R. En esta sesión
+? 9
+l.78 ...a principal aplicación para usar R. En es
+                                                  ta sesión
+? 9
+l.78 ...al aplicación para usar R. En esta sesió
+                                                  n
+? 9
+l.79 empezar
+            emos por conocer la interface y como podemos utilizarla.
+? 9
+l.79 empezaremos por 
+                     conocer la interface y como podemos utilizarla.
+? 9
+l.79 empezaremos por conocer l
+                              a interface y como podemos utilizarla.
+? 9
+l.79 empezaremos por conocer la interfa
+                                       ce y como podemos utilizarla.
+? 9
+l.79 empezaremos por conocer la interface y como
+                                                 podemos utilizarla.
+? 9
+l.79 ...s por conocer la interface y como podemos 
+                                                  utilizarla.
+? 9
+l.79 ...ocer la interface y como podemos utilizarl
+                                                  a.
+? 9
+l.81 \hypertarget{pan
+                     eles-clave-rstudio}{%
+? 9
+l.81 \hypertarget{paneles-clav
+                              e-rstudio}{%
+? 9
+l.81 \hypertarget{paneles-clave-rstudio
+                                       }{%
+? 9
+l.82 \section{Panel
+                   es Clave RStudio}\label{paneles-clave-rstudio}}
+? 9
+l.82 \section{Paneles Clave 
+                            RStudio}\label{paneles-clave-rstudio}}
+? 9
+l.82 \section{Paneles Clave RStudio}\label
+                                          {paneles-clave-rstudio}}
+? 9
+l.82 ...tion{Paneles Clave RStudio}\label{paneles-
+                                                  clave-rstudio}}
+? 9
+l.82 ...les Clave RStudio}\label{paneles-clave-rst
+                                                  udio}}
+? 9
+l.84 R
+      studio tiene los siguientes 4 paneles o áreas claves:
+? 9
+l.84 Rstudio ti
+               ene los siguientes 4 paneles o áreas claves:
+? 9
+l.84 Rstudio tiene los s
+                        iguientes 4 paneles o áreas claves:
+? 9
+l.84 Rstudio tiene los siguientes
+                                  4 paneles o áreas claves:
+? 9
+l.84 Rstudio tiene los siguientes 4 panele
+                                          s o áreas claves:
+? 9
+l.84 ...dio tiene los siguientes 4 paneles o área
+                                                  s claves:
+? 9
+l.84 ... los siguientes 4 paneles o áreas claves:
+                                                  
+? 9
+l.86 \begin{itemi
+                 ze}
+? 9
+l.89   Sou
+          rce Code o Editor de Código es la fuente donde escribes tú código.
+
+? 9
+l.89   Source Code 
+                   o Editor de Código es la fuente donde escribes tú código.
+
+? 9
+l.89   Source Code o Editor 
+                            de Código es la fuente donde escribes tú código.
+
+? 9
+l.89   Source Code o Editor de Códig
+                                     o es la fuente donde escribes tú código.
+
+? 9
+l.89   Source Code o Editor de Código es la f
+                                              uente donde escribes tú código.
+
+? 9
+l.89 ... Code o Editor de Código es la fuente don
+                                                  de escribes tú código.
+? 9
+l.89 ...ditor de Código es la fuente donde escrib
+                                                  es tú código.
+? 9
+l.89 ...Código es la fuente donde escribes tú c�
+                                                  �digo.
+? 99
+l.91   compartida con otros usuari
+                                  os.
+? 9
+l.93   Cons
+           ole o Consola donde se presenta los resultados de las operaciones
+? 9
+l.93   Console o Con
+                    sola donde se presenta los resultados de las operaciones
+? 9
+l.93   Console o Consola dond
+                             e se presenta los resultados de las operaciones
+? 9
+l.93   Console o Consola donde se pres
+                                      enta los resultados de las operaciones
+? 9
+l.93   Console o Consola donde se presenta los 
+                                               resultados de las operaciones
+? 9
+l.93 ... o Consola donde se presenta los resultado
+                                                  s de las operaciones
+? 9
+l.93 ...a donde se presenta los resultados de las 
+                                                  operaciones
+? 9
+l.93 ...e presenta los resultados de las operacion
+                                                  es
+? 9
+l.94   que co
+             mandamos en el guión.
+? 99
+l.97   creando c
+                omo tablas, bases de datos o funciones.
+? 99
+l.99 ...ages/Help, donde puedes ver tus archivos d
+                                                  e la
+? 99
+l.104 \hypertarget{so
+                     urce-codeeditor-de-cuxf3digo}{%
+? 99
+l.108 D
+       one se crea y edita los códigos de R. Aunque esrtos archivos se guardan
+
+? 99
+l.109 con la extensión ``.R'', 
+                                estos solo son archivos de texto. Los
+? 9
+l.109 con la extensión ``.R'', estos sol
+                                         o son archivos de texto. Los
+? 99
+l.112 El guión cu
+                  enta el número de línea donde se está escribiend el có...
+
+? 9
+l.112 El guión cuenta el n
+                           úmero de línea donde se está escribiend el có...
+
+? 99
+l.113 Para escribir anotaciones en el guión, se d
+                                                  ebe anteceder la línea co...
+
+? 9
+l.113 ...r anotaciones en el guión, se debe antec
+                                                  eder la línea con el
+? 9
+l.113 ...ones en el guión, se debe anteceder la l
+                                                  ínea con el
+? 9
+l.113 ...l guión, se debe anteceder la línea con
+                                                   el
+? 99
+l.115 ``\#\#\#\#\#'' haciéndo más fác
+                                        il la navegación dentro del guión.
+? 9
+l.115 ``\#\#\#\#\#'' haciéndo más fácil la nav
+                                                 egación dentro del guión.
+? 9
+l.115 ...#'' haciéndo más fácil la navegación 
+                                                  dentro del guión.
+? 9
+l.115 ...�ndo más fácil la navegación dentro de
+                                                  l guión.
+? 99
+l.118 podemos escribir 
+                       todas las instrucciones para realizar nuestros análisis
+
+? 
+<../../public/img/02 - Guión R.png, id=3, 963.6pt x 542.025pt>
+File: ../../public/img/02 - Guión R.png Graphic file (type png)
+<use ../../public/img/02 - Guión R.png>
+Package pdftex.def Info: ../../public/img/02 - Guión R.png  used on input line
+ 128.
+(pdftex.def)             Requested size: 1095.14838pt x 616.02094pt.
+
+Overfull \hbox (783.14838pt too wide) in paragraph at lines 128--129
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+
+ []
+
+
+LaTeX Warning: Float too large for page by 19.02094pt on input line 129.
+
+[1{C:/Users/Paulo/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
+
+] [2 <C:/Users/Paulo/Documents/GitHub/introduccion_R/public/img/02 - Guión R.p
+ng>]
+<../../public/img/02 - consola R.png, id=20, 922.44624pt x 527.9725pt>
+File: ../../public/img/02 - consola R.png Graphic file (type png)
+<use ../../public/img/02 - consola R.png>
+Package pdftex.def Info: ../../public/img/02 - consola R.png  used on input lin
+e 145.
+(pdftex.def)             Requested size: 922.16248pt x 527.81007pt.
+
+Overfull \hbox (778.16248pt too wide) in paragraph at lines 145--145
+[]  
+ []
 
 LaTeX Font Info:    Trying to load font information for OT1+pplx on input line 
-73.
+146.
 (C:\Users\Paulo\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pplx.fd
 File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
 )
 LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
-73.
+146.
 
 (C:\Users\Paulo\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-73.
+146.
 
 (C:\Users\Paulo\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
-73.
+146.
 
 (C:\Users\Paulo\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
-73.
+146.
 
 (C:\Users\Paulo\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 73.
+(Font)              scaled to size 12.50409pt on input line 146.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 73.
+(Font)              scaled to size 9.37807pt on input line 146.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 73.
+(Font)              scaled to size 7.29405pt on input line 146.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 73.
+(Font)              scaled to size 12.50409pt on input line 146.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 73.
+(Font)              scaled to size 9.37807pt on input line 146.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 73.
-
-! Extra }, or forgotten $.
-<recently read> \egroup 
-                        
-l.73 \maketitle
-               
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+(Font)              scaled to size 7.29405pt on input line 146.
 
 
-! LaTeX Error: \begin{document} ended by \end{tabular}.
+LaTeX Warning: Marginpar on page 3 moved.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73 \maketitle
-               
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+<../../public/img/02 - environment.png, id=21, 963.6pt x 542.025pt>
+File: ../../public/img/02 - environment.png Graphic file (type png)
+<use ../../public/img/02 - environment.png>
+Package pdftex.def Info: ../../public/img/02 - environment.png  used on input l
+ine 152.
+(pdftex.def)             Requested size: 1095.14838pt x 616.02094pt.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.73 \maketitle
-               
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 73.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 73.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 73.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 73.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 73.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 73.
-! Missing } inserted.
-<inserted text> 
-                }
-l.73 \maketitle
-               
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.73 \maketitle
-               
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing \cr inserted.
-<inserted text> 
-                \cr 
-l.73 \maketitle
-               
-I'm guessing that you meant to end an alignment here.
-
-! Missing { inserted.
-<inserted text> 
-                {
-l.73 \maketitle
-               
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.73 \maketitle
-               
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.73 \maketitle
-               
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.73 \maketitle
-               
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-LaTeX Font Info:    Trying to load font information for T1+fvm on input line 78
-.
-(C:\Users\Paulo\AppData\Local\Programs\MiKTeX\tex/latex/bera\t1fvm.fd
-File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
-)
-LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 8.50006pt on input line 78.
-
-Overfull \hbox (153.65018pt too wide) in paragraph at lines 80--80
-[]\T1/fvm/m/n/10 ## [1] "C:/Users/Paulo/Documents/GitHub/introduccion_R/sesione
-s/01 - que es R/que es R.Rmd"[] 
- []
-
-LaTeX Font Info:    Trying to load font information for TS1+pplj on input line 
-88.
-(C:\Users\Paulo\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1pplj.fd
-File: ts1pplj.fd 2004/09/06 font definitions for TS1/pplj.
-)
-<../../public/img/01 - Rstudio.png, id=3, 1780.6525pt x 1171.37625pt>
-File: ../../public/img/01 - Rstudio.png Graphic file (type png)
-<use ../../public/img/01 - Rstudio.png>
-Package pdftex.def Info: ../../public/img/01 - Rstudio.png  used on input line 
-148.
-(pdftex.def)             Requested size: 936.43248pt x 616.01843pt.
-
-Overfull \hbox (792.43248pt too wide) in paragraph at lines 148--148
+Overfull \hbox (951.14838pt too wide) in paragraph at lines 152--152
 []  
  []
 
-[1
 
-{C:/Users/Paulo/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <C:/Users/Pau
-lo/Documents/GitHub/introduccion_R/public/img/01 - Rstudio.png>]
+LaTeX Warning: Marginpar on page 3 moved.
+
 
 Package bibentry Warning: You have used \nobibliography* 
 (bibentry)                without a following \bibliography.
 (bibentry)                You may not be able to run BibTeX.
 
-[2] (que-es-R.aux)
+[3 <C:/Users/Paulo/Documents/GitHub/introduccion_R/public/img/02 - consola R.pn
+g> <C:/Users/Paulo/Documents/GitHub/introduccion_R/public/img/02 - environment.
+png>] (02---Rstudio.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
-Package rerunfilecheck Warning: File `que-es-R.out' has changed.
+Package rerunfilecheck Warning: File `02---Rstudio.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
-Package rerunfilecheck Info: Checksums for `que-es-R.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  207D6887D5A851F93919D2632DC8AA6C;366.
- ) 
+Package rerunfilecheck Info: Checksums for `02---Rstudio.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  F3D71DD12CA7EB21F63EB1B71436921A;196.
+ )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 73 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
- 14178 strings out of 475380
- 230153 string characters out of 2776772
- 584741 words of memory out of 3000000
- 35217 multiletter control sequences out of 15000+600000
- 515440 words of font info for 104 fonts, out of 8000000 for 9000
+ 14109 strings out of 475380
+ 229312 string characters out of 2776772
+ 576549 words of memory out of 3000000
+ 35172 multiletter control sequences out of 15000+600000
+ 504328 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,11n,94p,342b,446s stack positions out of 10000i,1000n,20000p,200000b,80000s
-{C:/Users/Paulo/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:
-/Users/Paulo/AppData/Local/Programs/MiKTeX/fonts/type1/public/fpl/fplrc8a.pfb><
-C:/Users/Paulo/AppData/Local/Programs/MiKTeX/fonts/type1/bera/fvmr8a.pfb><C:/Us
-ers/Paulo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:
-/Users/Paulo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb>
-<C:/Users/Paulo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.
-pfb>
-Output written on que-es-R.pdf (2 pages, 361710 bytes).
+ 94i,11n,94p,345b,586s stack positions out of 10000i,1000n,20000p,200000b,80000s
+{C:/Users/Paulo/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/b
+ase/8r.enc}<C:/Users/Paulo/AppData/Local/Programs/MiKTeX/fonts/type1/public/fpl
+/fplrc8a.pfb><C:/Users/Paulo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/pala
+tino/uplr8a.pfb><C:/Users/Paulo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/p
+alatino/uplri8a.pfb>
+Output written on 02---Rstudio.pdf (3 pages, 447343 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 19 named destinations out of 1000 (max. 500000)
- 1030 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 52 PDF objects out of 1000 (max. 8388607)
+ 12 named destinations out of 1000 (max. 500000)
+ 1040 words of extra memory for PDF output out of 10000 (max. 10000000)
 

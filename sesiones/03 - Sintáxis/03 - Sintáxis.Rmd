@@ -43,47 +43,20 @@ La consola de R es el área donde se presentan los resultados del código que he
 
 Adicionalmente, también se puede colocar líneas de código directa en la consola y el programa ejecutará los comandos, sin embargo, estas líneas de códigos no serán grabadas.
 
-```{r fig.margin = F, echo=FALSE, fig.cap="Consola R"}
+```{r fig.margin = TRUE, echo=FALSE, fig.cap="Consola R"}
 knitr::include_graphics(here::here("introduccion_R/public/img/02 - consola R.png"))
 ```
 
 ## Ambiente o Environment
 
-Muestra todos los objetos que se han ido creando durante la ejecucción del guión y una descripción breve de cada uno de ellos y sus atributos. Por ejemplo, te puede indicar el número de columnas y filas dentro de una tabla. Asimismo, dentro del panel hay algunas opciones como guardar el ambiente de trabajo, limpiarlo e importar archivos, aunque no es la mejor opción para ejecutar esta acción.
-
-En el environment guardamos objetos cuando en nuestro código usamos los operadores "\<-" o "=". El nombre del objeto va hacia la izquierda y su contenido a la derecha, en el medio de ambas partes se coloca el operador. Si deseas ver el objeto, solo se coloca el nombre y se da Enter.
-
-Un objeto puede tener cualquier nombre, con la condición que no empiece con un número o un underscore.
-
-```{r fig.margin = F, echo=FALSE, fig.cap="Editor de código"}
+```{r fig.margin = TRUE, echo=FALSE, fig.cap="Editor de código"}
 knitr::include_graphics(here::here("introduccion_R/public/img/02 - environment.png"))
 ```
 
 ## El panel de ayuda, gráficos (plots), archivos
 
-Muestra los gráficos que se mandan a ejecutar. También en esta sección tiene un explorador para ubicar los archivos que se desean trabajar, así como la lista de paquetes disponibles en R para el análisis de información y una sección de Ayuda ant cualquier pregunta.
+# Tipo de Variables en RStudio
 
-```{}
-```
+Creación de variables
 
-```{r fig.margin = F, echo=FALSE, fig.cap="Guión R"}
-knitr::include_graphics(here::here("introduccion_R/public/img/02 - plots.png"))
-```
-
-# Tipo de Variables en R
-
-Hay ocho tipo de datos claves con los que se trabajas. A continuación se da una lista de estos datos con sus respectivos ejemplos.
-
-```{r fig.margin = F, echo=FALSE, fig.cap="Tipo de Variables"}
-knitr::include_graphics(here::here("introduccion_R/public/img/02 - Tipo de Datos.png"))
-```
-
-Con este tipo de datos se pueden realizar diferentes tipos de acciones: si los datos son de tipo númerico o integral, estos se puede summar, dividir, restar. Si estamos trabajando con datos de tipo character o factor, estos se pueden agrupar en cadenas de datos. A continuación se muestran los operadores más comunes utilizados para realizar operaciones en R.
-
-```{r fig.margin = F, echo=FALSE, fig.cap="Tipo de Variables"}
-knitr::include_graphics(here::here("introduccion_R/public/img/02 - Operadores.png"))
-```
-
-# Tarea para esta semana
-
-Crear un guión con un conjunto de variables, cada tipo revisado en la clase excepto factor. Asimismo crear cuatro variables en base a las siguientes operaciones básicas (suma, resta, multiplicación, dvisión y potencia). Grabar el guión con su Nombre_Apellido_Tarea1 y enviarlo al correo del instructor.
+Tarea: un guión con un conjunto de variables, una de cada tipo
