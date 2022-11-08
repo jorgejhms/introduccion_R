@@ -80,7 +80,7 @@ knitr::include_graphics(here::here("introduccion_R/public/img/02 - Tipo de Datos
 
 Con este tipo de datos se pueden realizar diferentes tipos de acciones: si los datos son de tipo númerico o integral, estos se puede summar, dividir, restar. Si estamos trabajando con datos de tipo character o factor, estos se pueden agrupar en cadenas de datos. A continuación se muestran los operadores más comunes utilizados para realizar operaciones en R.
 
-```{r fig.margin = F, echo=FALSE, fig.cap="Tipo de Variables"}
+```{r fig.margin = F, echo=FALSE, fig.cap="Operadores Básicos"}
 knitr::include_graphics(here::here("introduccion_R/public/img/02 - Operadores.png"))
 ```
 
