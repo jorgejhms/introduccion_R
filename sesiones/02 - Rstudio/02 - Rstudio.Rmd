@@ -8,19 +8,32 @@ output:
 
 Rstudio es la principal aplicación para usar R. En esta sesión empezaremos por conocer la interface y como podemos utilizarla.
 
-RStudio tiene las siguientes áreas claves:
+RStudio tiene los siguientes 4 paneles o áreas claves:
 
--   El área de trabajo o workspace: donde escribimos nuestros códigos
+-   Source Code o Fuente: es la fuente donde escribes tú código. La información escrita puede ser luego almacenada, modificada y compartida con otros usuarios.
+-   Console o Consola donde se presenta los resultados de las operaciones que comandamos en el guión.
 -   El ambiente o Environment donde almacenamos los objetos que vamos creando como tablas, bases de datos o funciones.
--   La consola donde se presenta los resultados de las operaciones que comandamos.
+-   Files/Plots/Packages/Help, donde puedes ver tus archivos de la computadora, gráficos, paquetes (esto lo veremos luego) y archivos de ayuda.
 
-# La consola de R
+# Source Code/Edito de Código
 
-```{r fig.margin = TRUE, echo=FALSE, fig.cap="Consola R"}
-knitr::include_graphics(".../public/img/02 - consola R.png")
+Done se crea y edita los códigos de R. Aunque esrtos archivos se guardan con la extensión ".R", estos solo son archivos de texto. Los resultados del código se verán en el panel de Consola.
+
+El guión cuenta el número de línea donde se está escribiend el código. Para escribir anotaciones en el guión, se debe anteceder la línea con el símbolo "\#". También se puede dividir el guión secciones con "\#####" haciéndo más fácil la navegación dentro del guión.
+
+El editor de código será nuestro principal espacio de trabajo. Aquí podemos escribir todas las instrucciones para realizar nuestros análisis y reportes.
+
+```{r fig.margin = F, echo=FALSE, fig.cap="Guión R"}
+knitr::include_graphics("…/public/img/02 - Guión R.png")
 ```
 
+# Consola
+
 La consola de R es...
+
+```{r fig.margin = TRUE, echo=FALSE, fig.cap="Consola R"}
+knitr::include_graphics("…/public/img/02 - consola R.png")
+```
 
 ## Probando algunas instrucciones
 
@@ -30,8 +43,12 @@ La consola de R es...
 knitr::include_graphics("../public/img/02 - editor codigo.png")
 ```
 
-El editor de código será nuestro principal espacio de trabajo. Aquí podemos escribir todas las instrucciones para realizar nuestros análisis y reportes. Desde el editor podemos enviar a la consola línea por línea de código (para ir probando su ejecución), o el archivo completo
+Desde el editor podemos enviar a la consola línea por línea de código (para ir probando su ejecución), o el archivo completo
 
 # El panel del Entorno
 
 # El panel de ayuda, gráficos (plots), archivos
+
+Creación de variables
+
+Tarea: un guión con un conjunto de variables, una de cada tipo
