@@ -1,24 +1,28 @@
 ---
 title: "Elaborar Sintáxis en R"
 author:
-- "Jorge Meneses"
-- "Paulo Peña"
+- "Jorge Meneses y Paulo Peña"
 output:
-  tufte::tufte_html: default
-  tufte::tufte_handout: default
+  ioslides_presentation:
+    incremental: true
+    widescreen: true
 ---
 
 ```{r, echo=FALSE, results='hide', message=FALSE}
-here::i_am("introduccion_R/sesiones/03 - Sintáxis/03 - Sintáxis.Rmd")
+here::i_am("introduccion_R/sesiones/03-Sintáxis/03 - Sintáxis - copia.Rmd")
 ```
 
-En esta sesión aprenderemos como escribir el código de R de la forma más adecuada. Ya hemos visto los tipos de datos y operadores básicos para trabajar, ahora entederemos como emplear esta información para generar, manejar bases de datos y realizar análisis de las mismas.
+## ¿Qué aprenderemos?
 
-A continuación revisaremos las funciones básicos
+En esta sesión aprenderemos como escribir el código de R de la forma más adecuada. Ya hemos visto los tipos de datos y operadores básicos para trabajar, ahora entederemos como emplear esta información para generar bases, manejardatos y realizar análisis.
 
-# Vector
+A continuación revisaremos conceptos fundamentales, estilo de escritura y operadores lógicos.
+
+## Vector
 
 Un vector es la estructura de datos más sencilla en R. Un vector es una colección de uno o más datos del mismo tipo.
+
+La palabra vector será usada muchas veces por el programa para referirse a los objetos con los que trabajamos.
 
 Todo vector tiene tres propiedades:
 
@@ -26,42 +30,101 @@ Todo vector tiene tres propiedades:
 -   Largo: el número de elementos que contiene el vector
 -   Atributos: los metadatos del vector. Esta característica sobresale más cuando trabajamos con datos extraídos de SPSS o bases de datos en otros formatos.
 
-La palabra vector será usada muchas veces por el programa para referirse a los objetos con los que trabajamos.
+## Espacio de Trabajo
 
-# Espacio de Trabajo
+Antes de empezar a escribir una nueva sintáxis es necesario asegurar dos cosas:
 
-Es necesario
+-   Que el environment esté limpio
+-   Saber en qué directorio estamos almacenando nuestros archivos.
 
-El guión cuenta el número de línea donde se está escribiend el código. Para escribir anotaciones en el guión, se debe anteceder la línea con el símbolo "\#". También se puede dividir el guión secciones con "\#####" haciéndo más fácil la navegación dentro del guión.
+## Formulas para limpiar el ambiente y establecer directorio de trabajo
 
-El editor de código será nuestro principal espacio de trabajo. Aquí podemos escribir todas las instrucciones para realizar nuestros análisis y reportes.
+```{r}
+## Para limpiar el escritorio
+"rm(ls=list())" 
 
-El guión se puede ejecutar por líneas o completo. Si solo quiere ejecutar unas líneas, se debe seleccionar las líneas deseadas y apretar el botón Enter o también en el extremos derecho del panel se encuentra la opción "Run". Si se desea ejecutar todo un guión, en el extremos derecho del panel se selecciona la opción "Source".
+#la funcion rm() es para remover objetos, y la sintáxis ls=list() hace referencia a todos los objetos en tu entorno de trabajar
 
-```{r fig.margin = F, echo=FALSE, fig.cap="Guión R"}
-knitr::include_graphics(here::here("introduccion_R/public/img/02 - Guión R.png"))
+"getwd()" # para saber en que directorio estás trabajando
+"setwd()" # para establecer el directorio donde trabajamos
+
+# en R para indicar el directorio de trabajo es importante
+# escribir con "/" la dirección de las carpetas
+# por ejemplo "C:/Mis documentos/Proyecto"
+
+# en el caso de realizar un trabajo compartido
+# hay otras formas de trabajo que hablaremos luego
+
+# Si van a usar estas funciones USENLAS EN LA CONSOLA, no en el editor
 ```
 
-## Consola
+## Botones en RStudio para limpiar el ambiente
 
-La consola de R es el área donde se presentan los resultados del código que hemos ejecutado. Si hay algún error en el código escrito, la consola nos indicará sobre dicho error. Existen diferentes tipos de errores, pueden ser desde algo simple como un signo de puntuación mal puesto hasta cosas más complejas como falta de archivos en la computadora.
+En RStudio también podemos utilizar el botón de la escoba que se encuentra en la parte superior del panel de la consola.
 
-Adicionalmente, también se puede colocar líneas de código directa en la consola y el programa ejecutará los comandos, sin embargo, estas líneas de códigos no serán grabadas.
+!(./../../public/img/03%20-%20Botón%20Limpieza.png){width="80%"}
 
-```{r fig.margin = TRUE, echo=FALSE, fig.cap="Consola R"}
-knitr::include_graphics(here::here("introduccion_R/public/img/02 - consola R.png"))
+## Estilo de escritura
+
+Existen convenciones establecidas para asegurar con guion de R pueda ser leído e interpretado por otros. En esta sección revisaremos:
+
+- Organización de código
+- Nombre de objetos
+- Espaciado
+- Largo de las líneas
+
+## Organización de códigos
+
+Cuando se trabaja un guión se suele usar paquetes. En otra sesión hablaremos sobre lo que es un paquete, pero por el momento lo importante es saber que si usamos paquetes en nuestro trabajo estos tienen que estar cargados en la parte de arriba.
+
+También, es importante mantener un orden en el código. Es una buena práctica separar cada sección mediante "## Nombre----"
+
+```{r}
+# Dividir partes de los códigos claramante
+
+## Ejercicio1 --------
+
+var_numero <- 45
+
+## Ejercicio2 --------
+
+var_caracter <- "Hola Mundo"
+
 ```
 
-## Ambiente o Environment
+## Nombre de Objetos
 
-```{r fig.margin = TRUE, echo=FALSE, fig.cap="Editor de código"}
-knitr::include_graphics(here::here("introduccion_R/public/img/02 - environment.png"))
+Los nombres de las variables que asignemos tienen que ser cortos, describir bien a la variable, en minúsculas y sin espacios.
+
+Se puede utilizar "_" para separar palabras.
+
+```{r}
+# Ejemplos adecuados
+
+productos_vendidos <- 5
+precio_promedio <- 45
+costo_promedio <- -34
+facturacion_total <- 5*45
+
+## Ejemplos no adecuados
+
+Prod..vendidos <- 5
+Precio.Promedio <- 45
+
 ```
 
-## El panel de ayuda, gráficos (plots), archivos
+## Espaciado y Largo de Códigos
 
-# Tipo de Variables en RStudio
+La mayoría de operadores deben de ir espacios: "+", "<-", "*".
 
-Creación de variables
+Además, después de cada coma debe de ir un espacio para que pueda ser más legible el código ", ".
 
-Tarea: un guión con un conjunto de variables, una de cada tipo
+El único operador que no debe de ir con espacios es el de potencia "2^2". Si se pudiera un espacio, cuando se evalue el código R no entenderá la operación que se está solicitando.
+
+Sobre la extensión de código, el máximo de cada línea debe de ser 80 caracteres. Si se pasa de este largo, hay que usar el botón Enter y seguir escribiendo a partir de ahí.
+
+## Operadores Lógicos
+
+Mucho del trabajo en R, en especial para limpiar datos, consiste en usar adecuadamente condicionales y operaciones lógicas. A continuación daremos un listado de las operaciones lógicas más comunes.
+
+![Operadores Lógicos](./../../public/img/03%20-%20Operadores%20Lógicos.png){width="80%"}
