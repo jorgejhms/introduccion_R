@@ -203,7 +203,7 @@ tabla
 
 Rstudio nos permite visualizar una tabla de forma más amigable con el comando `View()`
 
-```{r}
+```{r, echo=TRUE, results='hide'}
 View(tabla)
 ```
 
