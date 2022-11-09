@@ -41,10 +41,10 @@ Antes de empezar a escribir una nueva sintáxis es necesario asegurar dos cosas:
 
 ```{r}
 ## Para limpiar el escritorio
-"rm(ls=list())"
+"rm(list = ls())"
 
 # la funcion rm() remueve objetos
-# la sintáxis ls=list() hace referencia a todos los objetos en tu entorno de trabajo
+# la sintáxis list = ls() hace referencia a todos los objetos en tu entorno de trabajo
 
 "getwd()" # para saber en que directorio estás trabajando
 "setwd()" # para establecer el directorio donde trabajamos
