@@ -1,0 +1,67 @@
+---
+title: "Elaborar Sintáxis en R"
+author:
+- "Jorge Meneses"
+- "Paulo Peña"
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout: default
+---
+
+```{r, echo=FALSE, results='hide', message=FALSE}
+here::i_am("introduccion_R/sesiones/03 - Sintáxis/03 - Sintáxis.Rmd")
+```
+
+En esta sesión aprenderemos como escribir el código de R de la forma más adecuada. Ya hemos visto los tipos de datos y operadores básicos para trabajar, ahora entederemos como emplear esta información para generar, manejar bases de datos y realizar análisis de las mismas.
+
+A continuación revisaremos las funciones básicos
+
+# Vector
+
+Un vector es la estructura de datos más sencilla en R. Un vector es una colección de uno o más datos del mismo tipo.
+
+Todo vector tiene tres propiedades:
+
+-   Tipo: dependerá del tipo de datos que contiene
+-   Largo: el número de elementos que contiene el vector
+-   Atributos: los metadatos del vector. Esta característica sobresale más cuando trabajamos con datos extraídos de SPSS o bases de datos en otros formatos.
+
+La palabra vector será usada muchas veces por el programa para referirse a los objetos con los que trabajamos.
+
+# Espacio de Trabajo
+
+Es necesario
+
+El guión cuenta el número de línea donde se está escribiend el código. Para escribir anotaciones en el guión, se debe anteceder la línea con el símbolo "\#". También se puede dividir el guión secciones con "\#####" haciéndo más fácil la navegación dentro del guión.
+
+El editor de código será nuestro principal espacio de trabajo. Aquí podemos escribir todas las instrucciones para realizar nuestros análisis y reportes.
+
+El guión se puede ejecutar por líneas o completo. Si solo quiere ejecutar unas líneas, se debe seleccionar las líneas deseadas y apretar el botón Enter o también en el extremos derecho del panel se encuentra la opción "Run". Si se desea ejecutar todo un guión, en el extremos derecho del panel se selecciona la opción "Source".
+
+```{r fig.margin = F, echo=FALSE, fig.cap="Guión R"}
+knitr::include_graphics(here::here("introduccion_R/public/img/02 - Guión R.png"))
+```
+
+## Consola
+
+La consola de R es el área donde se presentan los resultados del código que hemos ejecutado. Si hay algún error en el código escrito, la consola nos indicará sobre dicho error. Existen diferentes tipos de errores, pueden ser desde algo simple como un signo de puntuación mal puesto hasta cosas más complejas como falta de archivos en la computadora.
+
+Adicionalmente, también se puede colocar líneas de código directa en la consola y el programa ejecutará los comandos, sin embargo, estas líneas de códigos no serán grabadas.
+
+```{r fig.margin = TRUE, echo=FALSE, fig.cap="Consola R"}
+knitr::include_graphics(here::here("introduccion_R/public/img/02 - consola R.png"))
+```
+
+## Ambiente o Environment
+
+```{r fig.margin = TRUE, echo=FALSE, fig.cap="Editor de código"}
+knitr::include_graphics(here::here("introduccion_R/public/img/02 - environment.png"))
+```
+
+## El panel de ayuda, gráficos (plots), archivos
+
+# Tipo de Variables en RStudio
+
+Creación de variables
+
+Tarea: un guión con un conjunto de variables, una de cada tipo
