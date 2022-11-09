@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r, echo=FALSE, results='hide', message=FALSE}
-here::i_am("introduccion_R/sesiones/03-Sintáxis/03 - Sintáxis - copia.Rmd")
+here::i_am("sesiones/03-Sintáxis/03 - Sintáxis - copia.Rmd")
 ```
 
 ## ¿Qué aprenderemos?
@@ -37,32 +37,34 @@ Antes de empezar a escribir una nueva sintáxis es necesario asegurar dos cosas:
 -   Que el environment esté limpio
 -   Saber en qué directorio estamos almacenando nuestros archivos.
 
-## Formulas para limpiar el ambiente y establecer directorio de trabajo
+## Limpiar el ambiente y directorio de trabajo {.smaller}
 
 ```{r}
 ## Para limpiar el escritorio
-"rm(ls=list())" 
+"rm(ls=list())"
 
-#la funcion rm() es para remover objetos, y la sintáxis ls=list() hace referencia a todos los objetos en tu entorno de trabajar
+# la funcion rm() es para remover objetos, y la sintáxis ls=list() hace referencia a todos los objetos en tu entorno de trabajar
 
 "getwd()" # para saber en que directorio estás trabajando
 "setwd()" # para establecer el directorio donde trabajamos
-
-# en R para indicar el directorio de trabajo es importante
-# escribir con "/" la dirección de las carpetas
-# por ejemplo "C:/Mis documentos/Proyecto"
-
-# en el caso de realizar un trabajo compartido
-# hay otras formas de trabajo que hablaremos luego
-
-# Si van a usar estas funciones USENLAS EN LA CONSOLA, no en el editor
 ```
+
+---
+
+en R para indicar el directorio de trabajo es importante
+escribir con "/" la dirección de las carpetas
+por ejemplo "C:/Mis documentos/Proyecto"
+
+en el caso de realizar un trabajo compartido
+hay otras formas de trabajo que hablaremos luego
+
+Si van a usar estas funciones USENLAS EN LA CONSOLA, no en el editor
 
 ## Botones en RStudio para limpiar el ambiente
 
 En RStudio también podemos utilizar el botón de la escoba que se encuentra en la parte superior del panel de la consola.
 
-!(./../../public/img/03%20-%20Botón%20Limpieza.png){width="80%"}
+![](./../../public/img/03%20-%20Botón%20Limpieza.png){width="80%"}
 
 ## Estilo de escritura
 
@@ -89,7 +91,6 @@ var_numero <- 45
 ## Ejercicio2 --------
 
 var_caracter <- "Hola Mundo"
-
 ```
 
 ## Nombre de Objetos
@@ -104,13 +105,12 @@ Se puede utilizar "_" para separar palabras.
 productos_vendidos <- 5
 precio_promedio <- 45
 costo_promedio <- -34
-facturacion_total <- 5*45
+facturacion_total <- 5 * 45
 
 ## Ejemplos no adecuados
 
 Prod..vendidos <- 5
 Precio.Promedio <- 45
-
 ```
 
 ## Espaciado y Largo de Códigos
@@ -123,8 +123,11 @@ El único operador que no debe de ir con espacios es el de potencia "2^2". Si se
 
 Sobre la extensión de código, el máximo de cada línea debe de ser 80 caracteres. Si se pasa de este largo, hay que usar el botón Enter y seguir escribiendo a partir de ahí.
 
-## Operadores Lógicos
+## Operadores Lógicos{.smaller}
+
 
 Mucho del trabajo en R, en especial para limpiar datos, consiste en usar adecuadamente condicionales y operaciones lógicas. A continuación daremos un listado de las operaciones lógicas más comunes.
 
-![Operadores Lógicos](./../../public/img/03%20-%20Operadores%20Lógicos.png){width="80%"}
+```{r, echo=FALSE, out.height="60%"}
+knitr::include_graphics(here::here("public/img/03 - Operadores Lógicos.png"))
+```
