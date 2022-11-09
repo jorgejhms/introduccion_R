@@ -43,7 +43,8 @@ Antes de empezar a escribir una nueva sintáxis es necesario asegurar dos cosas:
 ## Para limpiar el escritorio
 "rm(ls=list())"
 
-# la funcion rm() es para remover objetos, y la sintáxis ls=list() hace referencia a todos los objetos en tu entorno de trabajar
+# la funcion rm() remueve objetos
+# la sintáxis ls=list() hace referencia a todos los objetos en tu entorno de trabajo
 
 "getwd()" # para saber en que directorio estás trabajando
 "setwd()" # para establecer el directorio donde trabajamos
@@ -51,14 +52,14 @@ Antes de empezar a escribir una nueva sintáxis es necesario asegurar dos cosas:
 
 ---
 
-en R para indicar el directorio de trabajo es importante
+En R para indicar el directorio de trabajo es importante
 escribir con "/" la dirección de las carpetas
 por ejemplo "C:/Mis documentos/Proyecto"
 
-en el caso de realizar un trabajo compartido
-hay otras formas de trabajo que hablaremos luego
+En el caso de realizar un proyecto compartido
+hay otras formas de trabajo que hablaremos luego,
 
-Si van a usar estas funciones USENLAS EN LA CONSOLA, no en el editor
+Si van a usar estas funciones USENLAS EN LA CONSOLA, no en el editor.
 
 ## Botones en RStudio para limpiar el ambiente
 
