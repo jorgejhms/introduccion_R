@@ -4,10 +4,14 @@ author:
 - "Jorge Meneses y Paulo Peña"
 
 output:
-  ioslides_presentation:
-    incremental: false
-    widescreen: true
+  slidy_presentation:
+    theme: simplex
+    highlight: default
 ---
+
+```{r setup, echo=FALSE, message=FALSE}
+here::i_am("sesiones/06-manipulación_datos/06-manipulacion_datos.Rmd")
+```
 
 ## Manipulación de datos
 
@@ -19,22 +23,32 @@ También tenemos herramientas para crear nuevas variables, con datos que resulte
 
 > **Por ejemplo**: Tenemos una base de datos con los ingresos de una empresa en cada mes. Podemos crear una nueva columna total, con los resultados para ese año.
 
-## Paquete Dplyr
+## Paquete Dplyr {.smaller}
 
+<div class="left" style='display:flex'>
+<div style='width: 50%'>
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("public/img/06-dplyr_logo.png"))
+```
+</div>
+
+<div>
 El paquete **dplyr** es un paquete que incluye múltiples herramientas para la manipulación de datos. Podemos encontrar más información sobre el paquete en su página web ([https://dplyr.tidyverse.org/](https://dplyr.tidyverse.org/))
 
-```{r}
+```{r, eval=FALSE}
 # Para instalar dplyr
 install.packages("dplyr")
-
-# Solo es necesario ejecutar este comando una vez en la consola. Luego tendremos instalado ese paquete en nuestra computadora
 ```
+Solo es necesario ejecutar este comando una vez en la consola. Luego tendremos instalado ese paquete en nuestra computadora
+
+</div>
+</div>
 
 ## Cargando dplyr
 
 Una vez que tenemos instalado dplyr en nuestra computadora, es necesario que carguemos el paquete en nuestro entorno de trabajo (Environment). Para hacerlo, hay que correr (run) la siguiente linea en la parte superior de nuestro guión:
 
-```{r}
+```{r, message=FALSE}
 library(dplyr) # Carga dplyr en nuestro entorno
 ```
 
@@ -44,9 +58,9 @@ Una vez cargado dplyr, podemos usar sus comandos como parte de nuestro trabajo. 
 
 Una tubería o *pipe* en R, nos permite pasar información de un comando a otro. Esto nos va a ser muy util al momento de manipular datos y hacer ajustes sobre nuestras tablas.
 
-El trabajo con *pipes* fue introducido por dplyr usando el comando `%>%`. Este comando lo podemos usar de esta forma:
+El trabajo con *pipes* fue introducido por dplyr usando el comando **`%>%`**. Este comando lo podemos usar de esta forma:
 
-```{r}
+```{r, eval=FALSE}
 # Sin pipe
 tabla <- paso1(tabla)
 tabla <- paso2(tabla)
@@ -63,11 +77,11 @@ tabla <- tabla %>%
 
 Usando pipes, tenemos un código más fácil de leer.
 
-## Pipe nativo
+## Pipe nativo {.smaller}
 
-A partir de la versión 4 de R, se introdujo un nuevo *pipe*, que no requiere de dplyr. Ese comando se escribe `|>`. En términos generales, se usa igual que `%>%`.
+A partir de la versión 4 de R, se introdujo un nuevo *pipe*, que no requiere de dplyr. Ese comando se escribe **`|>`**. En términos generales, se usa igual que **`%>%`**.
 
-```{r}
+```{r, eval=FALSE}
 # Sin pipe
 tabla <- paso1(tabla)
 tabla <- paso2(tabla)
@@ -86,17 +100,17 @@ tabla <- tabla |>
 
 En la sesión de hoy veremos los siguientes comandos usados en el paquete **dplyr**:
 
-- `count()`
+- `count()`. Permite contar los datos de una variable.
 - `filter()`. Filtrado de datos.
 - `select()`. Selecciona columnas específicas.
 - `rename()`. Renombra columnas específicas.
 - `mutate()`. Crea nuevas variables en base a otras anteriores.
 
-## Un tema importante
+## Un tema importante{.smaller}
 
 Siempre es importante trabajar con datos "limpios". Con esto nos referimos que nuestras tablas deben estar ordenadas (tener nombres claros, cada columna debe tener solo una variable, y cada fila solo una observación o caso). El paquete **janitor** incluye muchas herramientas que nos ayudan con esta tarea. No nos extenderemos en el uso de este paquete, pero una herramienta muy util es el comando `clean_names()`, con el cual nos aseguraremos que las tablas que importemos tengan nombres faciles de usar.
 
-```{r}
+```{r, eval=FALSE}
 # Cargamos base de datos de Información de usuarios de Juntos en I Bimestre del 2020
 # Fuente https://datosabiertos.midis.gob.pe/dataset/juntos-informaci%C3%B3n-de-usuarios-i-bimestre-2020
 
@@ -105,7 +119,16 @@ db_juntos <- read.csv(
   sep = ";" # indicamos que el separador del csv es ;
   ) |>
   janitor::clean_names() # Limpia los nombres de las columnas
+```
 
+```{r, echo=FALSE}
+# Cargando usando here
+
+db_juntos <- read.csv(
+  here::here("sesiones/06-manipulación_datos/03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv"),
+  sep = ";" # indicamos que el separador del csv es ;
+  ) |>
+  janitor::clean_names() # Limpia los nombres de las columnas
 ```
 
 ## Conociendo nuestra base de datos
@@ -117,19 +140,41 @@ Recordemos comandos para conocer nuestra base de datos
 str(db_juntos)
 ```
 
-Tenemos 9 variables (columnas) y 1325 observaciones (files). También nos indica los nombres de las columnas, su tipo de variable y los primeros casos. ¿Que podemos conocer con esta información?
+Tenemos 9 variables (columnas) y 1325 observaciones (filas). También nos indica los nombres de las columnas, su tipo de variable y los primeros casos. ¿Que podemos conocer con esta información?
 
-## Resumen general
+## Resumen general{.smaller}
 
 ```{r}
 # Obtenemos un resumen general de la tabla
 summary(db_juntos)
-
-# Unique nos da una lista con los valores únicos en cada variable
-unique(db_juntos$departamento)
 ```
 
-## Contando datos
+---
+
+```{r}
+# Unique nos da una lista con los valores únicos en cada variable
+unique(db_juntos$departamento)
+
+# Podemos guardar el resultado en una variable
+departamentos <- unique(db_juntos$departamento)
+```
+
+## Otros comandos útiles
+
+- `sum()` Nos da la suma total de los valores de un vector.
+- `mean()`. Da el promedio de los valores de un vector.
+- `min()` y `max()`. Nos indican los valores minimos y máximos en un vector.
+
+```{r}
+sum(db_juntos$transferencia)
+mean(db_juntos$hogares_afiliados)
+min(db_juntos$transferencia)
+max(db_juntos$hogares_abonados)
+```
+
+Todas estas respuestas se puden guardar en sus propias variables.
+
+## Contando datos{.smaller}
 
 El comando `count()` nos permite conocer los datos de una variable específica.
 
@@ -137,6 +182,7 @@ El comando `count()` nos permite conocer los datos de una variable específica.
 db_juntos |> count(departamento)
 ```
 
+Esta tabla nos está indicando el número de distritos en el programa juntos en cada departamento.
 ## Filtrando datos
 
 La base de juntos tiene datos para todo el país, pero queremos hacer un estudio sobre Cusco. Necesitamos filtrar los datos según el departamento
@@ -149,7 +195,7 @@ db_cusco <- db_juntos |>
 
 ---
 
-Veamos nuestra neuva tabla
+Veamos nuestra nueva tabla
 
 ```{r}
 str(db_cusco)
@@ -157,7 +203,7 @@ str(db_cusco)
 
 Tenemos las mismas variables, pero solo 93 casos.
 
-## Seleccionar columnas
+## Seleccionar columnas{.smaller}
 
 Para el trabajo que queremos hacer no necesitamos todas las columnas. El comando `select()` nos permite seleccionar solo algunas de ellas.
 
@@ -209,7 +255,7 @@ db_cusco <- db_cusco |>
   )
 ```
 
-## Creando nuevas variables
+## Creando nuevas variables{.smaller}
 
 El comando `mutate()` nos permite crear nuevas variables en base a información de otras variables.
 
@@ -222,16 +268,20 @@ db_cusco <- db_cusco |>
   )
 
 str(db_cusco)
-summary(db_cusco)
 ```
 
+---
+
+```{r}
+summary(db_cusco)
+```
 Ahora sabemos que la transferencia promedio es de 200 soles por hogar, el valor mínimo 195.2 y el valor máximo 234.1 soles por hogar.
 
-## Resumiendo
+## Resumiendo{.smaller}
 
 Gracias a pipe podemos hacer todos estos pasos juntos
 
-```{r}
+```{r, eval=FALSE}
 # Limpiamos el espacio de trabajo
 rm(list = ls())
 
@@ -244,6 +294,33 @@ db_juntos <- read.csv(
 
 # Filtramos base de cusco y ajustamos los datos que queremos
 db_cusco <- db_juntos |>
+  filter(departamento == "CUSCO") |>      # filtramos datos de cusco
+  select(-x, -ubigeo, -departamento) |>   # eliminamos columnas que no queremos
+  rename(                                 # Cambiamos nombre de columnas
+    afiliados = hogares_afiliados,
+    abonados = hogares_abonados,
+    ojetivos = miembros_objetivos
+  ) |>
+  mutate(                                 # Creamos nueva variable
+    transferencia_promedio = transferencia / abonados
+  )
+
+# Verificamos tabla final
+str(db_cusco)
+```
+
+```{r, echo=FALSE}
+# Cargando todo usando here
+rm(list = ls())
+
+# Cargamos nuestros datos y limpiamos nombres de columnas
+db_juntos <- read.csv(
+  here::here("sesiones/06-manipulación_datos/03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv"),
+  sep = ";"
+  ) |>
+  janitor::clean_names()
+
+db_cusco <- db_juntos |>
   filter(departamento == "CUSCO") |> # filtramos datos de cusco
   select(-x, -ubigeo, -departamento) |> # eliminamos columnas que no queremos
   rename( # Cambiamos nombre de columnas
@@ -255,7 +332,6 @@ db_cusco <- db_juntos |>
     transferencia_promedio = transferencia / abonados
   )
 
-# Verificamos tabla final
 str(db_cusco)
 ```
 
@@ -263,4 +339,24 @@ str(db_cusco)
 
 * Ayuda memoria: "Transformación de datos con dplyr" [(https://raw.githubusercontent.com/rstudio/cheatsheets/main/translations/spanish/data-transformation_es.pdf)](https://raw.githubusercontent.com/rstudio/cheatsheets/main/translations/spanish/data-transformation_es.pdf)
 
-- Tarea: Importar base de datos (facturación.csv y excel) y crear al menos 2 variables.
+## Ejercicio para casa {.smaller}
+
+Usando la misma base de datos creamos una nueva tabla:
+
+1. Filtrar los datos para un departamento y provincia de su elección.
+2. Eliminar columnas innecesarias.
+3. Renombrar al menos dos columnas a nombres más cortos.
+3. Crear 2 variables:
+    * Transferencia promedio.
+    * hogares que no han recibido el programa (se obtiene restando los abonados de los afiliados)
+
+Sobre esta nueva tabla responder las siguientes preguntas:
+
+1. ¿Qué distritos están afiliados en dicha provincia?
+2. ¿Cuantos afiliados en total tiene la provincia?
+3. ¿Cuántos hogares han sido abonados?
+4. ¿Cuánto ha sido el total de la transferencia del programa juntos en esa provincia?
+5. ¿Cual ha sido la transferencia promedio por hogar? ¿Cuál es el valor mínimo y cuál es el máximo?
+6. ¿Cuántos hogares no han recibido abonos del programa juntos?
+
+Las respuestas deben guardarse en variables separadas.
