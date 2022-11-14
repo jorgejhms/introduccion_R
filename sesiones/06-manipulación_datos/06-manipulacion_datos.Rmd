@@ -86,6 +86,7 @@ tabla <- tabla |>
 
 En la sesión de hoy veremos los siguientes comandos usados en el paquete **dplyr**:
 
+- `count()`
 - `filter()`. Filtrado de datos.
 - `select()`. Selecciona columnas específicas.
 - `rename()`. Renombra columnas específicas.
@@ -123,6 +124,17 @@ Tenemos 9 variables (columnas) y 1325 observaciones (files). También nos indica
 ```{r}
 # Obtenemos un resumen general de la tabla
 summary(db_juntos)
+
+# Unique nos da una lista con los valores únicos en cada variable
+unique(db_juntos$departamento)
+```
+
+## Contando datos
+
+El comando `count()` nos permite conocer los datos de una variable específica.
+
+```{r}
+db_juntos |> count(departamento)
 ```
 
 ## Filtrando datos
@@ -247,5 +259,8 @@ db_cusco <- db_juntos |>
 str(db_cusco)
 ```
 
+## Recursos útiles
+
+* Ayuda memoria: "Transformación de datos con dplyr" [(https://raw.githubusercontent.com/rstudio/cheatsheets/main/translations/spanish/data-transformation_es.pdf)](https://raw.githubusercontent.com/rstudio/cheatsheets/main/translations/spanish/data-transformation_es.pdf)
 
 - Tarea: Importar base de datos (facturación.csv y excel) y crear al menos 2 variables.
