@@ -1,0 +1,251 @@
+---
+title: "Manipulación de datos"
+author:
+- "Jorge Meneses y Paulo Peña"
+
+output:
+  ioslides_presentation:
+    incremental: false
+    widescreen: true
+---
+
+## Manipulación de datos
+
+La manipulación y arreglo de datos es un paso fundamental en proceso de análisis de datos e información. En muchas ocasiones, las bases de datos que importamos, tienen mucha más información de la que vamos a necesitar, por lo que existen diferentes comandos que nos permiten filtrar, seleccionar, o recortar las tablas para trabajar solo con los datos que necesitamos.
+
+> **Por ejemplo**: Descargamos una base de datos de incidencias de enfermedades en todo el país, pero queremos hacer un análisis sobre la situación en Cusco. Con R podemos filtrar los datos correspondientes solo a la región.
+
+También tenemos herramientas para crear nuevas variables, con datos que resulten de cálculos sobre otras variables.
+
+> **Por ejemplo**: Tenemos una base de datos con los ingresos de una empresa en cada mes. Podemos crear una nueva columna total, con los resultados para ese año.
+
+## Paquete Dplyr
+
+El paquete **dplyr** es un paquete que incluye múltiples herramientas para la manipulación de datos. Podemos encontrar más información sobre el paquete en su página web ([https://dplyr.tidyverse.org/](https://dplyr.tidyverse.org/))
+
+```{r}
+# Para instalar dplyr
+install.packages("dplyr")
+
+# Solo es necesario ejecutar este comando una vez en la consola. Luego tendremos instalado ese paquete en nuestra computadora
+```
+
+## Cargando dplyr
+
+Una vez que tenemos instalado dplyr en nuestra computadora, es necesario que carguemos el paquete en nuestro entorno de trabajo (Environment). Para hacerlo, hay que correr (run) la siguiente linea en la parte superior de nuestro guión:
+
+```{r}
+library(dplyr) # Carga dplyr en nuestro entorno
+```
+
+Una vez cargado dplyr, podemos usar sus comandos como parte de nuestro trabajo. Dada la importancia de dplyr, es casi seguro que lo usemos en todos nuestros archivos.
+
+## Trabajando con *pipes* (tuberías) {.smaller}
+
+Una tubería o *pipe* en R, nos permite pasar información de un comando a otro. Esto nos va a ser muy util al momento de manipular datos y hacer ajustes sobre nuestras tablas.
+
+El trabajo con *pipes* fue introducido por dplyr usando el comando `%>%`. Este comando lo podemos usar de esta forma:
+
+```{r}
+# Sin pipe
+tabla <- paso1(tabla)
+tabla <- paso2(tabla)
+tabla <- paso3(tabla)
+tabla <- paso4(tabla)
+
+# Con pipe
+tabla <- tabla %>%
+          paso1() %>%
+          paso2() %>%
+          paso3() %>%
+          paso4() %>%
+```
+
+Usando pipes, tenemos un código más fácil de leer.
+
+## Pipe nativo
+
+A partir de la versión 4 de R, se introdujo un nuevo *pipe*, que no requiere de dplyr. Ese comando se escribe `|>`. En términos generales, se usa igual que `%>%`.
+
+```{r}
+# Sin pipe
+tabla <- paso1(tabla)
+tabla <- paso2(tabla)
+tabla <- paso3(tabla)
+tabla <- paso4(tabla)
+
+# Con pipe
+tabla <- tabla |>
+          paso1() |>
+          paso2() |>
+          paso3() |>
+          paso4() |>
+```
+
+## Comandos útiles
+
+En la sesión de hoy veremos los siguientes comandos usados en el paquete **dplyr**:
+
+- `filter()`. Filtrado de datos.
+- `select()`. Selecciona columnas específicas.
+- `rename()`. Renombra columnas específicas.
+- `mutate()`. Crea nuevas variables en base a otras anteriores.
+
+## Un tema importante
+
+Siempre es importante trabajar con datos "limpios". Con esto nos referimos que nuestras tablas deben estar ordenadas (tener nombres claros, cada columna debe tener solo una variable, y cada fila solo una observación o caso). El paquete **janitor** incluye muchas herramientas que nos ayudan con esta tarea. No nos extenderemos en el uso de este paquete, pero una herramienta muy util es el comando `clean_names()`, con el cual nos aseguraremos que las tablas que importemos tengan nombres faciles de usar.
+
+```{r}
+# Cargamos base de datos de Información de usuarios de Juntos en I Bimestre del 2020
+# Fuente https://datosabiertos.midis.gob.pe/dataset/juntos-informaci%C3%B3n-de-usuarios-i-bimestre-2020
+
+db_juntos <- read.csv(
+  "sesiones/06-manipulación_datos/03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv",
+  sep = ";" # indicamos que el separador del csv es ;
+  ) |>
+  janitor::clean_names() # Limpia los nombres de las columnas
+
+```
+
+## Conociendo nuestra base de datos
+
+Recordemos comandos para conocer nuestra base de datos
+
+```{r}
+# Revisamos la estructura general de la tabla
+str(db_juntos)
+```
+
+Tenemos 9 variables (columnas) y 1325 observaciones (files). También nos indica los nombres de las columnas, su tipo de variable y los primeros casos. ¿Que podemos conocer con esta información?
+
+## Resumen general
+
+```{r}
+# Obtenemos un resumen general de la tabla
+summary(db_juntos)
+```
+
+## Filtrando datos
+
+La base de juntos tiene datos para todo el país, pero queremos hacer un estudio sobre Cusco. Necesitamos filtrar los datos según el departamento
+
+```{r}
+# Creamos una nueva tabla solo con los datos de Cusco
+db_cusco <- db_juntos |>
+  filter(departamento == "CUSCO")
+```
+
+---
+
+Veamos nuestra neuva tabla
+
+```{r}
+str(db_cusco)
+```
+
+Tenemos las mismas variables, pero solo 93 casos.
+
+## Seleccionar columnas
+
+Para el trabajo que queremos hacer no necesitamos todas las columnas. El comando `select()` nos permite seleccionar solo algunas de ellas.
+
+Como no nos interesa la variable `x` ni la variable `ubigeo` las eliminamos. Tampoco necesitamos ya la variable departamento.
+
+```{r}
+nueva_tabla <- db_cusco |>
+  select( # dentro de select listamos SOLO las columnas que queremos en la nueva tabla
+    provincia,
+    distrito,
+    hogares_afiliados,
+    hogares_abonados,
+    miembros_objetivos,
+    transferencia
+  )
+
+str(nueva_tabla)
+```
+
+---
+
+Si la lista de columnas que queremos es muy larga, podemos usar select para *eliminar solo las columnas que no queremos*. Para eso, ponemos el signo `-` al frente del nombre de la columna
+
+```{r}
+nueva_tabla2 <- db_cusco |>
+  select(-x, -ubigeo, -departamento)
+
+str(nueva_tabla2) # Verificamos que es igual que anterior
+
+db_cusco <- nueva_tabla2 # Guardamos la nueva tabla en lugar de la tabla original
+
+rm(nueva_tabla, nueva_tabla2) # eliminamos tablas repetidas y que ya no necesitamos
+```
+
+## Renombrando columnas
+
+El comando `rename()` nos permite cambiar los nombres de solo algunas columnas. El formato del comando es:
+
+```
+nombre_nuevo = nombre_antiguo
+```
+
+```{r}
+db_cusco <- db_cusco |>
+  rename(
+    afiliados = hogares_afiliados,
+    abonados = hogares_abonados,
+    ojetivos = miembros_objetivos
+  )
+```
+
+## Creando nuevas variables
+
+El comando `mutate()` nos permite crear nuevas variables en base a información de otras variables.
+
+En nuestro caso, la columna transferencia nos indica el valor total en soles de la transferencia a cada distrito. Creemos una nueva variable `transferencia_promedio` que nos indique el promedio de transferencia por cada hogar para cada distrito.
+
+```{r}
+db_cusco <- db_cusco |>
+  mutate(
+    transferencia_promedio = transferencia / abonados
+  )
+
+str(db_cusco)
+summary(db_cusco)
+```
+
+Ahora sabemos que la transferencia promedio es de 200 soles por hogar, el valor mínimo 195.2 y el valor máximo 234.1 soles por hogar.
+
+## Resumiendo
+
+Gracias a pipe podemos hacer todos estos pasos juntos
+
+```{r}
+# Limpiamos el espacio de trabajo
+rm(list = ls())
+
+# Cargamos nuestros datos y limpiamos nombres de columnas
+db_juntos <- read.csv(
+  "sesiones/06-manipulación_datos/03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv",
+  sep = ";"
+  ) |>
+  janitor::clean_names()
+
+# Filtramos base de cusco y ajustamos los datos que queremos
+db_cusco <- db_juntos |>
+  filter(departamento == "CUSCO") |> # filtramos datos de cusco
+  select(-x, -ubigeo, -departamento) |> # eliminamos columnas que no queremos
+  rename( # Cambiamos nombre de columnas
+    afiliados = hogares_afiliados,
+    abonados = hogares_abonados,
+    ojetivos = miembros_objetivos
+  ) |>
+  mutate( # Creamos nueva variable
+    transferencia_promedio = transferencia / abonados
+  )
+
+# Verificamos tabla final
+str(db_cusco)
+```
+
+
+- Tarea: Importar base de datos (facturación.csv y excel) y crear al menos 2 variables.
