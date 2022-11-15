@@ -346,9 +346,10 @@ Usando la misma base de datos creamos una nueva tabla:
 1. Filtrar los datos para un departamento y provincia de su elección.
 2. Eliminar columnas innecesarias.
 3. Renombrar al menos dos columnas a nombres más cortos.
-3. Crear 2 variables:
+4. Crear 2 variables:
     * Transferencia promedio.
     * hogares que no han recibido el programa (se obtiene restando los abonados de los afiliados)
+5. Exportar la nueva tabla en un csv
 
 Sobre esta nueva tabla responder las siguientes preguntas:
 
@@ -359,4 +360,4 @@ Sobre esta nueva tabla responder las siguientes preguntas:
 5. ¿Cual ha sido la transferencia promedio por hogar? ¿Cuál es el valor mínimo y cuál es el máximo?
 6. ¿Cuántos hogares no han recibido abonos del programa juntos?
 
-Las respuestas deben guardarse en variables separadas.
+Las respuestas deben guardarse en variables (objetos) separadas.
