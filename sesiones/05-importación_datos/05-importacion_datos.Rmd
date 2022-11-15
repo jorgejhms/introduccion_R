@@ -1,0 +1,142 @@
+---
+title: "Importación de Datos en R"
+author: "Jorge Meneses y Paulo Peña"
+output:
+  ioslides_presentation:
+    incremental: yes
+    widescreen: yes
+  slidy_presentation:
+    incremental: yes
+    theme: simplex
+---
+
+```{r, echo=FALSE, results='hide', message=FALSE}
+here::i_am("sesiones/05-importación_datos/05-importacion_datos.Rmd")
+```
+
+## ¿Qué aprenderemos?
+
+En esta sesión entenderemos los conceptos de paquetes y librerías. Asimismo, aprenderemos a escribir los códigos para importar datos y como corroborar los datos que hemos importado a nuestros proyectos.
+
+## Paquete
+
+Un paquete es una colección de funciones desarrolladas por la comunidad de R para temáticas específicas. Características importantes sobre los paquetes:
+
+-   Todo paquete es revisado previamenteante antes de ser publicados.
+-   La mayoría de paquetes se pueden acceder desde el editor de código, salvo aquellos que están desactualizados
+-   Los paquetes tienen su propia documentación con ejemplos para saber como usarlos adecuadamente
+-   Los paquetes son completamente gratis
+
+## Paquetes más usados
+
+-   dplyr: para organizar y manipular datos
+-   ggplot2: para gener gráficos de alto impacto
+-   tidy: para manipular dataframes (bases de datos)
+-   openxlsx: para editar datos de microsoft excel
+
+## Cómo utilizo un paquete
+
+Usaremos como ejemplo el paquete dplyr, un paquete fundamental en el uso de R
+
+```{r, eval=FALSE}
+## Para instalar un paquete
+install.packages("dplyr")
+
+# Importante colocar el nombre del paquete entre comillas ""
+# si vamos a instalar dplyr, hay que colocarlo ("dplyr")
+
+## Para usar un paquete
+
+library(dplyr)
+
+# Una vez instalado el paquete usamos la función library
+# Con library podremos utilizar las funciones en nuestra sesión de trabajo
+```
+
+## Importar datos
+
+Cuando importamos un archivo estamos guardando contenido en nuestra sesión como un objeto. El procedimiento que usemos determinará el tipo de objeto creado.
+
+De manera análoga, podemos exportar nuestros objetos de R a archivos.
+
+Fuente: <https://bookdown.org/jboscomendoza/r-principiantes4/importar-y-exportar-datos.html>
+
+## Importar datos: botones en RStudio
+
+Como primera opción, para importar datos podemos utilizar el botón "Import Dataset" dentro del panel de Entorno y escoger el tipo de archivo.
+
+![](./../../public/img/05%20-%20Bot%C3%B3n%20Importacion.png){width="80%"}
+
+## Botón de Importación
+
+Luego aparecerá una ventana para que podamos buscar el documento dentro de nuestros archivos. En el lado inferior derecho aparece automáticamente las líneas de código necesarias a ingresar si se quisiera escribir en el editor de códigos.
+
+![](./../../public/img/05%20-%20Bot%C3%B3n%20Importacion2.png){width="80%"}
+
+## Escribiendo el código
+
+Si vamos por la opción de escribir el código en el guión (opción más recomendada) estas serían las líneas de código usuales. Usaremos como ejemplo la base del programa juntos:
+
+```{r, eval = F}
+# Código para importar .csv
+
+link <- "https://datosabiertos.midis.gob.pe/sites/default/files/03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv"
+data <- read.csv(link, sep = ";")
+
+# Código para importar .xlsx
+
+library(openxlsx)
+data <- read.xlsx("archivo.xlsx")
+
+# para exportar en formato de excel se reocmienda usar el paquete xlsx
+```
+
+## Verificar los datos importados
+
+Una vez tengamos la data podemos revisar su contenido con los siguientes comandos:
+
+```{r, eval = F}
+
+View(data)
+
+```
+
+![](./../../public/img/05%20-%20View.png){width="80%"}
+
+## Verificar los datos importados, continuando...
+
+Si desean explorar los datos también pueden usar los siguientes comandos:
+
+```{r, eval = F}
+
+str(data)
+# str viene de esructura, sirve para saber la estructura del objeto
+
+dim(data) 
+# para saber las dimensiones en el objeto: número de filas x número de columnas
+
+length(data)
+# número de columnas
+
+dplyr::count(data)
+# número de filas en la tabla
+
+summary(data)
+#resumir los datos
+```
+
+## Escribir los datos
+
+R nos permite exportar los objetos que creamos en diferentes formatos (.xlsx, .csv, .sav).
+
+```{r, eval = F}
+
+# Exportar en .csv: se puede realizar con las funciones utils
+
+write.csv(data, "C:/ubicación/nombrearchivo.csv")
+
+# Exportar en .xlsx: esto solo se hace con ayuda de otros paquetes. Recomendamos altamente el uso del paquete openxlsx
+
+write.xlsx(data, "C:/ubicación/nombrearchivo.xlsx")
+
+```
