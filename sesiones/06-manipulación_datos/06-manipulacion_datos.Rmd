@@ -1,19 +1,17 @@
 ---
 title: "Manipulación de datos"
-author:
-- "Jorge Meneses y Paulo Peña"
-
+author: "Jorge Meneses y Paulo Peña"
 output:
-  slidy_presentation:
-    theme: simplex
+  ioslides_presentation:
     highlight: default
+
 ---
 
 ```{r setup, echo=FALSE, message=FALSE}
 here::i_am("sesiones/06-manipulación_datos/06-manipulacion_datos.Rmd")
 ```
 
-## Manipulación de datos
+## Manipulación de datos{.smaller}
 
 La manipulación y arreglo de datos es un paso fundamental en proceso de análisis de datos e información. En muchas ocasiones, las bases de datos que importamos, tienen mucha más información de la que vamos a necesitar, por lo que existen diferentes comandos que nos permiten filtrar, seleccionar, o recortar las tablas para trabajar solo con los datos que necesitamos.
 
@@ -25,14 +23,11 @@ También tenemos herramientas para crear nuevas variables, con datos que resulte
 
 ## Paquete Dplyr {.smaller}
 
-<div class="left" style='display:flex'>
-<div style='width: 50%'>
-```{r, echo=FALSE, out.width="100%"}
+<div class="columns-2">
+```{r, echo=FALSE, out.width="80%"}
 knitr::include_graphics(here::here("public/img/06-dplyr_logo.png"))
 ```
-</div>
 
-<div>
 El paquete **dplyr** es un paquete que incluye múltiples herramientas para la manipulación de datos. Podemos encontrar más información sobre el paquete en su página web ([https://dplyr.tidyverse.org/](https://dplyr.tidyverse.org/))
 
 ```{r, eval=FALSE}
@@ -131,7 +126,7 @@ db_juntos <- read.csv(
   janitor::clean_names() # Limpia los nombres de las columnas
 ```
 
-## Conociendo nuestra base de datos
+## Conociendo nuestra base de datos{.smaller}
 
 Recordemos comandos para conocer nuestra base de datos
 
@@ -159,11 +154,13 @@ unique(db_juntos$departamento)
 departamentos <- unique(db_juntos$departamento)
 ```
 
-## Otros comandos útiles
+## Otros comandos útiles{.smaller}
 
 - `sum()` Nos da la suma total de los valores de un vector.
 - `mean()`. Da el promedio de los valores de un vector.
 - `min()` y `max()`. Nos indican los valores minimos y máximos en un vector.
+
+Todas estas respuestas se puden guardar en sus propias variables.
 
 ```{r}
 sum(db_juntos$transferencia)
@@ -172,20 +169,19 @@ min(db_juntos$transferencia)
 max(db_juntos$hogares_abonados)
 ```
 
-Todas estas respuestas se puden guardar en sus propias variables.
-
 ## Contando datos{.smaller}
 
-El comando `count()` nos permite conocer los datos de una variable específica.
+El comando `count()` nos permite contar cuantas veces se repite una variable. En este caso, nos está dando la cantidad de distritos en cada departamento. 
 
 ```{r}
 db_juntos |> count(departamento)
 ```
 
-Esta tabla nos está indicando el número de distritos en el programa juntos en cada departamento.
-## Filtrando datos
+## Filtrando datos{.smaller}
 
-La base de juntos tiene datos para todo el país, pero queremos hacer un estudio sobre Cusco. Necesitamos filtrar los datos según el departamento
+La base de Juntos tiene datos para todo el país, pero queremos hacer un estudio sobre Cusco. Necesitamos filtrar los datos según el departamento
+
+Para eso usamos el comando `filter()`. Dentro del paréntesis escribimos el criterio con el que queremos seleccionar los casos.
 
 ```{r}
 # Creamos una nueva tabla solo con los datos de Cusco
@@ -193,9 +189,7 @@ db_cusco <- db_juntos |>
   filter(departamento == "CUSCO")
 ```
 
----
-
-Veamos nuestra nueva tabla
+## Veamos nuestra nueva tabla{.smaller}
 
 ```{r}
 str(db_cusco)
@@ -220,10 +214,11 @@ nueva_tabla <- db_cusco |>
     transferencia
   )
 
+# Revisamos la nueva tabla
 str(nueva_tabla)
 ```
 
----
+## Eliminando columnas{.smaller}
 
 Si la lista de columnas que queremos es muy larga, podemos usar select para *eliminar solo las columnas que no queremos*. Para eso, ponemos el signo `-` al frente del nombre de la columna
 
@@ -270,11 +265,12 @@ db_cusco <- db_cusco |>
 str(db_cusco)
 ```
 
----
+## Verificamos la nueva tabla{.smaller}
 
 ```{r}
 summary(db_cusco)
 ```
+
 Ahora sabemos que la transferencia promedio es de 200 soles por hogar, el valor mínimo 195.2 y el valor máximo 234.1 soles por hogar.
 
 ## Resumiendo{.smaller}
@@ -282,16 +278,6 @@ Ahora sabemos que la transferencia promedio es de 200 soles por hogar, el valor 
 Gracias a pipe podemos hacer todos estos pasos juntos
 
 ```{r, eval=FALSE}
-# Limpiamos el espacio de trabajo
-rm(list = ls())
-
-# Cargamos nuestros datos y limpiamos nombres de columnas
-db_juntos <- read.csv(
-  "sesiones/06-manipulación_datos/03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv",
-  sep = ";"
-  ) |>
-  janitor::clean_names()
-
 # Filtramos base de cusco y ajustamos los datos que queremos
 db_cusco <- db_juntos |>
   filter(departamento == "CUSCO") |>      # filtramos datos de cusco
@@ -335,7 +321,7 @@ db_cusco <- db_juntos |>
 str(db_cusco)
 ```
 
-## Recursos útiles
+## Recursos útiles {.smaller}
 
 * Ayuda memoria: "Transformación de datos con dplyr" [(https://raw.githubusercontent.com/rstudio/cheatsheets/main/translations/spanish/data-transformation_es.pdf)](https://raw.githubusercontent.com/rstudio/cheatsheets/main/translations/spanish/data-transformation_es.pdf)
 
@@ -350,6 +336,8 @@ Usando la misma base de datos creamos una nueva tabla:
     * Transferencia promedio.
     * hogares que no han recibido el programa (se obtiene restando los abonados de los afiliados)
 5. Exportar la nueva tabla en un csv
+
+---
 
 Sobre esta nueva tabla responder las siguientes preguntas:
 
