@@ -73,7 +73,7 @@ Luego aparecerá una ventana para que podamos buscar el documento dentro de nues
 
 ![](./../../public/img/05%20-%20Bot%C3%B3n%20Importacion2.png){width="80%"}
 
-## Escribiendo el código
+## Escribiendo el código{.smaller}
 
 Si vamos por la opción de escribir el código en el guión (opción más recomendada) estas serían las líneas de código usuales. Usaremos como ejemplo la base del programa juntos:
 
@@ -135,7 +135,8 @@ R nos permite exportar los objetos que creamos en diferentes formatos (.xlsx, .c
 
 write.csv(data, "C:/ubicación/nombrearchivo.csv")
 
-# Exportar en .xlsx: esto solo se hace con ayuda de otros paquetes. Recomendamos altamente el uso del paquete openxlsx
+# Exportar en .xlsx: esto solo se hace con ayuda de otros paquetes.
+# Recomendamos altamente el uso del paquete openxlsx
 
 write.xlsx(data, "C:/ubicación/nombrearchivo.xlsx")
 
