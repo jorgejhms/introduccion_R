@@ -1859,20 +1859,35 @@ abonados de los afiliados)</li>
 <h3>Primero importamos la base de datos:</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDYXJnYW1vcyBsaWJyZXLDrWEgZHBseXJcbmxpYnJhcnkoZHBseXIpXG5cbiMgQ2FyZ2Ftb3MgbGEgYmFzZSBlbiB1biBvYmpldG8gcXVlIGxsYW1hcmVtb3MganVudG9zXG5qdW50b3MgPC1cbiAgcmVhZC5jc3YoXG4gICAgXCIwMy1EYXRhc2V0LUpVTlRPUy1pbmZvcm1hY2lvbi11c3Vhcmlvcy1JLWJpbWVzdHJlLTIwMjAuY3N2XCIsXG4gICAgc2VwPVwiO1wiXG4gICkgfD5cbiAgamFuaXRvcjo6Y2xlYW5fbmFtZXMoKVxuXG4jIFZlbW9zIGxhIGVzdHJ1Y3R1cmEgZGUgbGEgYmFzZVxuc3RyKGp1bnRvcylcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgQ2FyZ2Ftb3MgbGlicmVyw61hIGRwbHlyIiwibGlicmFyeShkcGx5cikiXX0= -->
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargamos librería dplyr</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargamos la base en un objeto que llamaremos juntos</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>juntos <span class="ot">&lt;-</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv&quot;</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep=</span><span class="st">&quot;;&quot;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Vemos la estructura de la base</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(juntos)</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<!-- rnb-source-end -->
+<!-- rnb-message-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTogJ2RwbHlyJ1xuIn0= -->
+<pre><code>
+Attaching package: &#39;dplyr&#39;</code></pre>
+<!-- rnb-message-end -->
+<!-- rnb-message-begin eyJkYXRhIjoiVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSAncGFja2FnZTpzdGF0cyc6XG5cbiAgICBmaWx0ZXIsIGxhZ1xuIn0= -->
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag</code></pre>
+<!-- rnb-message-end -->
+<!-- rnb-message-begin eyJkYXRhIjoiVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSAncGFja2FnZTpiYXNlJzpcblxuICAgIGludGVyc2VjdCwgc2V0ZGlmZiwgc2V0ZXF1YWwsIHVuaW9uXG4ifQ== -->
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<!-- rnb-message-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgQ2FyZ2Ftb3MgbGEgYmFzZSBlbiB1biBvYmpldG8gcXVlIGxsYW1hcmVtb3MganVudG9zIiwianVudG9zIDwtXG4gIHJlYWQuY3N2KFxuICAgIFwiMDMtRGF0YXNldC1KVU5UT1MtaW5mb3JtYWNpb24tdXN1YXJpb3MtSS1iaW1lc3RyZS0yMDIwLmNzdlwiLFxuICAgIHNlcCA9IFwiO1wiXG4gICkgfD5cbiAgamFuaXRvcjo6Y2xlYW5fbmFtZXMoKSIsIiIsIiMgVmVtb3MgbGEgZXN0cnVjdHVyYSBkZSBsYSBiYXNlIiwic3RyKGp1bnRvcykiXX0= -->
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargamos la base en un objeto que llamaremos juntos</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>juntos <span class="ot">&lt;-</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv&quot;</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;;&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Vemos la estructura de la base</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(juntos)</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiJ2RhdGEuZnJhbWUnOlx0MTMyNSBvYnMuIG9mICA5IHZhcmlhYmxlczpcbiAkIHggICAgICAgICAgICAgICAgIDogaW50ICAxIDIgMyA0IDUgNiA3IDggOSAxMCAuLi5cbiAkIHViaWdlbyAgICAgICAgICAgIDogaW50ICAxMDEwMiAxMDEwMyAxMDEwNCAxMDEwNSAxMDEwNiAxMDEwNyAxMDEwOCAxMDEwOSAxMDExMCAxMDExMSAuLi5cbiAkIGRlcGFydGFtZW50byAgICAgIDogY2hyICBcIkFNQVpPTkFTXCIgXCJBTUFaT05BU1wiIFwiQU1BWk9OQVNcIiBcIkFNQVpPTkFTXCIgLi4uXG4gJCBwcm92aW5jaWEgICAgICAgICA6IGNociAgXCJDSEFDSEFQT1lBU1wiIFwiQ0hBQ0hBUE9ZQVNcIiBcIkNIQUNIQVBPWUFTXCIgXCJDSEFDSEFQT1lBU1wiIC4uLlxuICQgZGlzdHJpdG8gICAgICAgICAgOiBjaHIgIFwiQVNVTkNJT05cIiBcIkJBTFNBU1wiIFwiQ0hFVE9cIiBcIkNISUxJUVVJTlwiIC4uLlxuICQgaG9nYXJlc19hZmlsaWFkb3MgOiBpbnQgIDI1IDEwNiA1MCA3MiAyMjAgMjEgMjUgNjU3IDMyNCA3NCAuLi5cbiAkIGhvZ2FyZXNfYWJvbmFkb3MgIDogaW50ICAyMCAxMDMgNTEgNzAgMjA3IDIwIDIzIDY0OSAzMTUgNTYgLi4uXG4gJCBtaWVtYnJvc19vYmpldGl2b3M6IGludCAgNDEgMjEyIDgxIDExMSA0NDAgMzggNDUgMTQxMyA2MDUgMTI1IC4uLlxuICQgdHJhbnNmZXJlbmNpYSAgICAgOiBudW0gIDQ3MDAgMjQ5MDAgMTA0MDAgMTYzMDAgNDI5MDAgLi4uXG4ifQ== -->
 <pre><code>&#39;data.frame&#39;:   1325 obs. of  9 variables:
@@ -1894,25 +1909,26 @@ abonados de los afiliados)</li>
 elección</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDcmVhbW9zIG51ZXN0cmEgbnVldmEgYmFzZVxuY2hhY2hhcG95YXMgPC0ganVudG9zIHw+XG4gIGZpbHRlcihcbiAgICBkZXBhcnRhbWVudG8gPT0gXCJBTUFaT05BU1wiICZcbiAgICAgIHByb3ZpbmNpYSA9PSBcIkNIQUNIQVBPWUFTXCIpIHw+ICAgICAgXG4gIHNlbGVjdCgteCwgLXViaWdlbywgLWRlcGFydGFtZW50bywgLXByb3ZpbmNpYSkgfD4gICBcbiAgcmVuYW1lKCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICAgIGFmaWxpYWRvcyA9IGhvZ2FyZXNfYWZpbGlhZG9zLFxuICAgIGFib25hZG9zID0gaG9nYXJlc19hYm9uYWRvcyxcbiAgICBvYmpldGl2b3MgPSBtaWVtYnJvc19vYmpldGl2b3NcbiAgKSB8PlxuICBtdXRhdGUoICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gICAgdHJhbnNmZXJlbmNpYV9wcm9tZWRpbyA9IHRyYW5zZmVyZW5jaWEgLyBhYm9uYWRvcyxcbiAgICBvbWl0aWRvcyA9IGFmaWxpYWRvcyAtIGFib25hZG9zXG4gIClcblxuIyBNaXJhbW9zIHJlc3VsdGFkb1xuc3RyKGNoYWNoYXBveWFzKVxuYGBgIn0= -->
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos nuestra nueva base</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>chachapoyas <span class="ot">&lt;-</span> juntos <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    departamento <span class="sc">==</span> <span class="st">&quot;AMAZONAS&quot;</span> <span class="sc">&amp;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      provincia <span class="sc">==</span> <span class="st">&quot;CHACHAPOYAS&quot;</span>) <span class="sc">|&gt;</span>      </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>ubigeo, <span class="sc">-</span>departamento, <span class="sc">-</span>provincia) <span class="sc">|&gt;</span>   </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(                                 </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">afiliados =</span> hogares_afiliados,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">abonados =</span> hogares_abonados,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">objetivos =</span> miembros_objetivos</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(                                 </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">transferencia_promedio =</span> transferencia <span class="sc">/</span> abonados,</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">omitidos =</span> afiliados <span class="sc">-</span> abonados</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Miramos resultado</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(chachapoyas)</span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgQ3JlYW1vcyBudWVzdHJhIG51ZXZhIGJhc2UiLCJjaGFjaGFwb3lhcyA8LSBqdW50b3MgfD5cbiAgZmlsdGVyKFxuICAgIGRlcGFydGFtZW50byA9PSBcIkFNQVpPTkFTXCIgJlxuICAgICAgcHJvdmluY2lhID09IFwiQ0hBQ0hBUE9ZQVNcIlxuICApIHw+XG4gIHNlbGVjdCgteCwgLXViaWdlbywgLWRlcGFydGFtZW50bywgLXByb3ZpbmNpYSkgfD5cbiAgcmVuYW1lKFxuICAgIGFmaWxpYWRvcyA9IGhvZ2FyZXNfYWZpbGlhZG9zLFxuICAgIGFib25hZG9zID0gaG9nYXJlc19hYm9uYWRvcyxcbiAgICBvYmpldGl2b3MgPSBtaWVtYnJvc19vYmpldGl2b3NcbiAgKSB8PlxuICBtdXRhdGUoXG4gICAgdHJhbnNmZXJlbmNpYV9wcm9tZWRpbyA9IHRyYW5zZmVyZW5jaWEgLyBhYm9uYWRvcyxcbiAgICBvbWl0aWRvcyA9IGFmaWxpYWRvcyAtIGFib25hZG9zXG4gICkiLCIiLCIjIE1pcmFtb3MgcmVzdWx0YWRvIiwic3RyKGNoYWNoYXBveWFzKSJdfQ== -->
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos nuestra nueva base</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>chachapoyas <span class="ot">&lt;-</span> juntos <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    departamento <span class="sc">==</span> <span class="st">&quot;AMAZONAS&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      provincia <span class="sc">==</span> <span class="st">&quot;CHACHAPOYAS&quot;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>ubigeo, <span class="sc">-</span>departamento, <span class="sc">-</span>provincia) <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">afiliados =</span> hogares_afiliados,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">abonados =</span> hogares_abonados,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">objetivos =</span> miembros_objetivos</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">transferencia_promedio =</span> transferencia <span class="sc">/</span> abonados,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">omitidos =</span> afiliados <span class="sc">-</span> abonados</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Miramos resultado</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(chachapoyas)</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiJ2RhdGEuZnJhbWUnOlx0MjAgb2JzLiBvZiAgNyB2YXJpYWJsZXM6XG4gJCBkaXN0cml0byAgICAgICAgICAgICAgOiBjaHIgIFwiQVNVTkNJT05cIiBcIkJBTFNBU1wiIFwiQ0hFVE9cIiBcIkNISUxJUVVJTlwiIC4uLlxuICQgYWZpbGlhZG9zICAgICAgICAgICAgIDogaW50ICAyNSAxMDYgNTAgNzIgMjIwIDIxIDI1IDY1NyAzMjQgNzQgLi4uXG4gJCBhYm9uYWRvcyAgICAgICAgICAgICAgOiBpbnQgIDIwIDEwMyA1MSA3MCAyMDcgMjAgMjMgNjQ5IDMxNSA1NiAuLi5cbiAkIG9iamV0aXZvcyAgICAgICAgICAgICA6IGludCAgNDEgMjEyIDgxIDExMSA0NDAgMzggNDUgMTQxMyA2MDUgMTI1IC4uLlxuICQgdHJhbnNmZXJlbmNpYSAgICAgICAgIDogbnVtICA0NzAwIDI0OTAwIDEwNDAwIDE2MzAwIDQyOTAwIC4uLlxuICQgdHJhbnNmZXJlbmNpYV9wcm9tZWRpbzogbnVtICAyMzUgMjQyIDIwNCAyMzMgMjA3IC4uLlxuICQgb21pdGlkb3MgICAgICAgICAgICAgIDogaW50ICA1IDMgLTEgMiAxMyAxIDIgOCA5IDE4IC4uLlxuIn0= -->
 <pre><code>&#39;data.frame&#39;:   20 obs. of  7 variables:
@@ -1929,6 +1945,9 @@ elección</h3>
 <p>Finalmente guardamos nuestra nueva tabla</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoid3JpdGUuY3N2KGNoYWNoYXBveWFzLCBcImNoYWNoYXBveWFzLmNzdlwiKSJ9 -->
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(chachapoyas, <span class="st">&quot;chachapoyas.csv&quot;</span>)</span></code></pre></div>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -1939,8 +1958,15 @@ elección</h3>
 </ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hhY2hhcG95YXNfZGlzdHJpdG9zXG5cbmBgYCJ9 -->
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>chachapoyas_distritos</span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjoiY2hhY2hhcG95YXNfZGlzdHJpdG9zIDwtIHVuaXF1ZShjaGFjaGFwb3lhcyRkaXN0cml0bykifQ== -->
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>chachapoyas_distritos <span class="ot">&lt;-</span> <span class="fu">unique</span>(chachapoyas<span class="sc">$</span>distrito)</span></code></pre></div>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoicHJpbnQoY2hhY2hhcG95YXNfZGlzdHJpdG9zKSJ9 -->
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chachapoyas_distritos)</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIkFTVU5DSU9OXCIgICAgICAgICAgICBcIkJBTFNBU1wiICAgICAgICAgICAgICBcIkNIRVRPXCIgICAgICAgICAgICAgIFxuIFs0XSBcIkNISUxJUVVJTlwiICAgICAgICAgICBcIkNIVVFVSUJBTUJBXCIgICAgICAgICBcIkdSQU5BREFcIiAgICAgICAgICAgIFxuIFs3XSBcIkhVQU5DQVNcIiAgICAgICAgICAgICBcIkxBIEpBTENBXCIgICAgICAgICAgICBcIkxFSU1FQkFNQkFcIiAgICAgICAgIFxuWzEwXSBcIkxFVkFOVE9cIiAgICAgICAgICAgICBcIk1BR0RBTEVOQVwiICAgICAgICAgICBcIk1BUklTQ0FMIENBU1RJTExBXCIgIFxuWzEzXSBcIk1PTElOT1BBTVBBXCIgICAgICAgICBcIk1PTlRFVklERU9cIiAgICAgICAgICBcIk9MTEVST1NcIiAgICAgICAgICAgIFxuWzE2XSBcIlFVSU5KQUxDQVwiICAgICAgICAgICBcIlNBTiBGQ08uIERFIERBR1VBU1wiICBcIlNBTiBJU0lEUk8gREUgTUFJTk9cIlxuWzE5XSBcIlNPTE9DT1wiICAgICAgICAgICAgICBcIlNPTkNIRVwiICAgICAgICAgICAgIFxuIn0= -->
 <pre><code> [1] &quot;ASUNCION&quot;            &quot;BALSAS&quot;              &quot;CHETO&quot;              
@@ -1958,10 +1984,13 @@ elección</h3>
 </ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hhY2hhcG95YXNfYWZpbGlhZG9zIDwtIHN1bShjaGFjaGFwb3lhcyRhZmlsaWFkb3MpXG5jaGFjaGFwb3lhc19hZmlsaWFkb3NcbmBgYCJ9 -->
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>chachapoyas_afiliados <span class="ot">&lt;-</span> <span class="fu">sum</span>(chachapoyas<span class="sc">$</span>afiliados)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>chachapoyas_afiliados</span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjpbImNoYWNoYXBveWFzX2FmaWxpYWRvcyA8LSBzdW0oY2hhY2hhcG95YXMkYWZpbGlhZG9zKSIsImNoYWNoYXBveWFzX2FmaWxpYWRvcyJdfQ== -->
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>chachapoyas_afiliados <span class="ot">&lt;-</span> <span class="fu">sum</span>(chachapoyas<span class="sc">$</span>afiliados)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>chachapoyas_afiliados</span></code></pre></div>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIyOTRcbiJ9 -->
+<pre><code>[1] 2294</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <ol start="3" style="list-style-type: decimal">
@@ -1969,9 +1998,9 @@ elección</h3>
 </ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hhY2hhcG95YXNfYWJvbmFkb3MgPC0gc3VtKGNoYWNoYXBveWFzJGFib25hZG9zKVxuY2hhY2hhcG95YXNfYWJvbmFkb3NcbmBgYCJ9 -->
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>chachapoyas_abonados <span class="ot">&lt;-</span> <span class="fu">sum</span>(chachapoyas<span class="sc">$</span>abonados)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>chachapoyas_abonados</span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjpbImNoYWNoYXBveWFzX2Fib25hZG9zIDwtIHN1bShjaGFjaGFwb3lhcyRhYm9uYWRvcykiLCJjaGFjaGFwb3lhc19hYm9uYWRvcyJdfQ== -->
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>chachapoyas_abonados <span class="ot">&lt;-</span> <span class="fu">sum</span>(chachapoyas<span class="sc">$</span>abonados)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>chachapoyas_abonados</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIyMTdcbiJ9 -->
 <pre><code>[1] 2217</code></pre>
@@ -1984,8 +2013,9 @@ esa provincia?</li>
 </ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG90YWxfdHJhbnNmZXJlbmNpYVxuXG5gYGAifQ== -->
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>total_transferencia</span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjpbInRvdGFsX3RyYW5zZmVyZW5jaWEgPC0gc3VtKGNoYWNoYXBveWFzJHRyYW5zZmVyZW5jaWEpIiwidG90YWxfdHJhbnNmZXJlbmNpYSJdfQ== -->
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>total_transferencia <span class="ot">&lt;-</span> <span class="fu">sum</span>(chachapoyas<span class="sc">$</span>transferencia)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>total_transferencia</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQ3MTE5OS40XG4ifQ== -->
 <pre><code>[1] 471199.4</code></pre>
@@ -1998,24 +2028,24 @@ mínimo y cuál es el máximo?</li>
 </ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhbnNmZXJlbmNpYV9wcm9tZWRpbyA8LSBtZWFuKGNoYWNoYXBveWFzJHRyYW5zZmVyZW5jaWFfcHJvbWVkaW8pXG50cmFuc2ZlcmVuY2lhX21pbiA8LSBtaW4oY2hhY2hhcG95YXMkdHJhbnNmZXJlbmNpYV9wcm9tZWRpbylcbnRyYW5zZmVyZW5jaWFfbWF4IDwtIG1heChjaGFjaGFwb3lhcyR0cmFuc2ZlcmVuY2lhX3Byb21lZGlvKVxuXG50cmFuc2ZlcmVuY2lhX3Byb21lZGlvXG5gYGAifQ== -->
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>transferencia_promedio <span class="ot">&lt;-</span> <span class="fu">mean</span>(chachapoyas<span class="sc">$</span>transferencia_promedio)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>transferencia_min <span class="ot">&lt;-</span> <span class="fu">min</span>(chachapoyas<span class="sc">$</span>transferencia_promedio)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>transferencia_max <span class="ot">&lt;-</span> <span class="fu">max</span>(chachapoyas<span class="sc">$</span>transferencia_promedio)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>transferencia_promedio</span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjpbInRyYW5zZmVyZW5jaWFfcHJvbWVkaW8gPC0gbWVhbihjaGFjaGFwb3lhcyR0cmFuc2ZlcmVuY2lhX3Byb21lZGlvKSIsInRyYW5zZmVyZW5jaWFfbWluIDwtIG1pbihjaGFjaGFwb3lhcyR0cmFuc2ZlcmVuY2lhX3Byb21lZGlvKSIsInRyYW5zZmVyZW5jaWFfbWF4IDwtIG1heChjaGFjaGFwb3lhcyR0cmFuc2ZlcmVuY2lhX3Byb21lZGlvKSIsIiIsInRyYW5zZmVyZW5jaWFfcHJvbWVkaW8iXX0= -->
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>transferencia_promedio <span class="ot">&lt;-</span> <span class="fu">mean</span>(chachapoyas<span class="sc">$</span>transferencia_promedio)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>transferencia_min <span class="ot">&lt;-</span> <span class="fu">min</span>(chachapoyas<span class="sc">$</span>transferencia_promedio)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>transferencia_max <span class="ot">&lt;-</span> <span class="fu">max</span>(chachapoyas<span class="sc">$</span>transferencia_promedio)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>transferencia_promedio</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIxMy44Mjc4XG4ifQ== -->
 <pre><code>[1] 213.8278</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhbnNmZXJlbmNpYV9tYXhcbmBgYCJ9 -->
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>transferencia_max</span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjoidHJhbnNmZXJlbmNpYV9tYXgifQ== -->
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>transferencia_max</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDI1Mi45NDEyXG4ifQ== -->
 <pre><code>[1] 252.9412</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhbnNmZXJlbmNpYV9taW5cbmBgYCJ9 -->
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>transferencia_min</span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjoidHJhbnNmZXJlbmNpYV9taW4ifQ== -->
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>transferencia_min</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE5Ny4yOTczXG4ifQ== -->
 <pre><code>[1] 197.2973</code></pre>
@@ -2027,9 +2057,9 @@ mínimo y cuál es el máximo?</li>
 </ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hhY2hhcG95YXNfb21pdGlkb3MgPC0gc3VtKGNoYWNoYXBveWFzJG9taXRpZG9zKVxuY2hhY2hhcG95YXNfb21pdGlkb3NcbmBgYCJ9 -->
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>chachapoyas_omitidos <span class="ot">&lt;-</span> <span class="fu">sum</span>(chachapoyas<span class="sc">$</span>omitidos)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>chachapoyas_omitidos</span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjpbImNoYWNoYXBveWFzX29taXRpZG9zIDwtIHN1bShjaGFjaGFwb3lhcyRvbWl0aWRvcykiLCJjaGFjaGFwb3lhc19vbWl0aWRvcyJdfQ== -->
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>chachapoyas_omitidos <span class="ot">&lt;-</span> <span class="fu">sum</span>(chachapoyas<span class="sc">$</span>omitidos)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>chachapoyas_omitidos</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDc3XG4ifQ== -->
 <pre><code>[1] 77</code></pre>
@@ -2040,7 +2070,7 @@ mínimo y cuál es el máximo?</li>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiU29sdWNpb25hcmlvIFByw6FjdGljYSA2IgpvdXRwdXQ6IAogIGh0bWxfbm90ZWJvb2s6IAogICAgaGlnaGxpZ2h0OiBweWdtZW50cwogICAgdGhlbWU6IGNlcnVsZWFuCi0tLQoKYGBge3Igc2V0dXAsIG1lc3NhZ2U9RkFMU0UsIGVjaG89RkFMU0V9CmhlcmU6OmlfYW0oInNlc2lvbmVzLzA4IC0gUiBtYXJrZG93bi9zb2x1Y2lvbmFyaW8gcHJhY3RpY2EgNi5SbWQiKQpgYGAKCiMjIEVqZXJjaWNpbwoKVXNhbmRvIGxhIG1pc21hIGJhc2UgZGUgZGF0b3MgY3JlYW1vcyB1bmEgbnVldmEgdGFibGE6CgotICAgRmlsdHJhciBsb3MgZGF0b3MgcGFyYSB1biBkZXBhcnRhbWVudG8geSBwcm92aW5jaWEgZGUgc3UgZWxlY2Npw7NuLgotICAgRWxpbWluYXIgY29sdW1uYXMgaW5uZWNlc2FyaWFzLgotICAgUmVub21icmFyIGFsIG1lbm9zIGRvcyBjb2x1bW5hcyBhIG5vbWJyZXMgbcOhcyBjb3J0b3MuCi0gICBDcmVhciAyIHZhcmlhYmxlczoKICAgIC0gICBUcmFuc2ZlcmVuY2lhIHByb21lZGlvLgogICAgLSAgIGhvZ2FyZXMgcXVlIG5vIGhhbiByZWNpYmlkbyBlbCBwcm9ncmFtYSAoc2Ugb2J0aWVuZSByZXN0YW5kbyBsb3MgYWJvbmFkb3MgZGUgbG9zIGFmaWxpYWRvcykKLSAgIEV4cG9ydGFyIGxhIG51ZXZhIHRhYmxhIGVuIHVuIGNzdgoKIyMjIFByaW1lcm8gaW1wb3J0YW1vcyBsYSBiYXNlIGRlIGRhdG9zOgoKYGBge3J9CiMgQ2FyZ2Ftb3MgbGlicmVyw61hIGRwbHlyCmxpYnJhcnkoZHBseXIpCgojIENhcmdhbW9zIGxhIGJhc2UgZW4gdW4gb2JqZXRvIHF1ZSBsbGFtYXJlbW9zIGp1bnRvcwpqdW50b3MgPC0KICByZWFkLmNzdigKICAgICIwMy1EYXRhc2V0LUpVTlRPUy1pbmZvcm1hY2lvbi11c3Vhcmlvcy1JLWJpbWVzdHJlLTIwMjAuY3N2IiwKICAgIHNlcD0iOyIKICApIHw+CiAgamFuaXRvcjo6Y2xlYW5fbmFtZXMoKQoKIyBWZW1vcyBsYSBlc3RydWN0dXJhIGRlIGxhIGJhc2UKc3RyKGp1bnRvcykKYGBgCgojIyMgTHVlZ28gY3JlZW1vcyBudWVzdHJhIGJhc2UgZGUgZGF0b3MgcGFyYSB1bmEgcHJvdmluY2lhIGEgbnVlc3RyYSBlbGVjY2nDs24KCmBgYHtyfQojIENyZWFtb3MgbnVlc3RyYSBudWV2YSBiYXNlCmNoYWNoYXBveWFzIDwtIGp1bnRvcyB8PgogIGZpbHRlcigKICAgIGRlcGFydGFtZW50byA9PSAiQU1BWk9OQVMiICYKICAgICAgcHJvdmluY2lhID09ICJDSEFDSEFQT1lBUyIpIHw+ICAgICAgCiAgc2VsZWN0KC14LCAtdWJpZ2VvLCAtZGVwYXJ0YW1lbnRvLCAtcHJvdmluY2lhKSB8PiAgIAogIHJlbmFtZSggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIGFmaWxpYWRvcyA9IGhvZ2FyZXNfYWZpbGlhZG9zLAogICAgYWJvbmFkb3MgPSBob2dhcmVzX2Fib25hZG9zLAogICAgb2JqZXRpdm9zID0gbWllbWJyb3Nfb2JqZXRpdm9zCiAgKSB8PgogIG11dGF0ZSggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIHRyYW5zZmVyZW5jaWFfcHJvbWVkaW8gPSB0cmFuc2ZlcmVuY2lhIC8gYWJvbmFkb3MsCiAgICBvbWl0aWRvcyA9IGFmaWxpYWRvcyAtIGFib25hZG9zCiAgKQoKIyBNaXJhbW9zIHJlc3VsdGFkbwpzdHIoY2hhY2hhcG95YXMpCmBgYAoKRmluYWxtZW50ZSBndWFyZGFtb3MgbnVlc3RyYSBudWV2YSB0YWJsYQoKYGBge3J9CndyaXRlLmNzdihjaGFjaGFwb3lhcywgImNoYWNoYXBveWFzLmNzdiIpCmBgYAoKCiMjIyBBaG9yYSBwYXNhbW9zIGEgcmVzcG9uZGVyIGxhcyBwcmVndW50YXM6CgoxLiDCv1F1w6kgZGlzdHJpdG9zIGVzdMOhbiBhZmlsaWFkb3MgZW4gZGljaGEgcHJvdmluY2lhPwoKYGBge3J9CmNoYWNoYXBveWFzX2Rpc3RyaXRvcyA8LSB1bmlxdWUoY2hhY2hhcG95YXMkZGlzdHJpdG8pCmNoYWNoYXBveWFzX2Rpc3RyaXRvcwpgYGAKCgoKMi4gwr9DdWFudG9zIGFmaWxpYWRvcyBlbiB0b3RhbCB0aWVuZSBsYSBwcm92aW5jaWE/CgpgYGB7cn0KY2hhY2hhcG95YXNfYWZpbGlhZG9zIDwtIHN1bShjaGFjaGFwb3lhcyRhZmlsaWFkb3MpCmNoYWNoYXBveWFzX2FmaWxpYWRvcwpgYGAKCjMuIMK/Q3XDoW50b3MgaG9nYXJlcyBoYW4gc2lkbyBhYm9uYWRvcz8KCmBgYHtyfQpjaGFjaGFwb3lhc19hYm9uYWRvcyA8LSBzdW0oY2hhY2hhcG95YXMkYWJvbmFkb3MpCmNoYWNoYXBveWFzX2Fib25hZG9zCmBgYAoKNC4gwr9DdcOhbnRvIGhhIHNpZG8gZWwgdG90YWwgZGUgbGEgdHJhbnNmZXJlbmNpYSBkZWwgcHJvZ3JhbWEganVudG9zIGVuIGVzYSBwcm92aW5jaWE/CgpgYGB7cn0KdG90YWxfdHJhbnNmZXJlbmNpYSA8LSBzdW0oY2hhY2hhcG95YXMkdHJhbnNmZXJlbmNpYSkKdG90YWxfdHJhbnNmZXJlbmNpYQpgYGAKCjUuIMK/Q3VhbCBoYSBzaWRvIGxhIHRyYW5zZmVyZW5jaWEgcHJvbWVkaW8gcG9yIGhvZ2FyPyDCv0N1w6FsIGVzIGVsIHZhbG9yIG3DrW5pbW8geSBjdcOhbCBlcyBlbCBtw6F4aW1vPwoKYGBge3J9CnRyYW5zZmVyZW5jaWFfcHJvbWVkaW8gPC0gbWVhbihjaGFjaGFwb3lhcyR0cmFuc2ZlcmVuY2lhX3Byb21lZGlvKQp0cmFuc2ZlcmVuY2lhX21pbiA8LSBtaW4oY2hhY2hhcG95YXMkdHJhbnNmZXJlbmNpYV9wcm9tZWRpbykKdHJhbnNmZXJlbmNpYV9tYXggPC0gbWF4KGNoYWNoYXBveWFzJHRyYW5zZmVyZW5jaWFfcHJvbWVkaW8pCgp0cmFuc2ZlcmVuY2lhX3Byb21lZGlvCnRyYW5zZmVyZW5jaWFfbWF4CnRyYW5zZmVyZW5jaWFfbWluCmBgYAoKNi4gwr9DdcOhbnRvcyBob2dhcmVzIG5vIGhhbiByZWNpYmlkbyBhYm9ub3MgZGVsIHByb2dyYW1hIGp1bnRvcz8KCmBgYHtyfQpjaGFjaGFwb3lhc19vbWl0aWRvcyA8LSBzdW0oY2hhY2hhcG95YXMkb21pdGlkb3MpCmNoYWNoYXBveWFzX29taXRpZG9zCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiU29sdWNpb25hcmlvIFByw6FjdGljYSA2IgpvdXRwdXQ6CiAgaHRtbF9ub3RlYm9vazoKICAgIGhpZ2hsaWdodDogcHlnbWVudHMKICAgIHRoZW1lOiBjZXJ1bGVhbgotLS0KCmBgYHtyIHNldHVwLCBtZXNzYWdlPUZBTFNFLCBlY2hvPUZBTFNFfQpoZXJlOjppX2FtKCJzZXNpb25lcy8wOCAtIFIgbWFya2Rvd24vc29sdWNpb25hcmlvIHByYWN0aWNhIDYuUm1kIikKYGBgCgojIyBFamVyY2ljaW8KClVzYW5kbyBsYSBtaXNtYSBiYXNlIGRlIGRhdG9zIGNyZWFtb3MgdW5hIG51ZXZhIHRhYmxhOgoKLSAgIEZpbHRyYXIgbG9zIGRhdG9zIHBhcmEgdW4gZGVwYXJ0YW1lbnRvIHkgcHJvdmluY2lhIGRlIHN1IGVsZWNjacOzbi4KLSAgIEVsaW1pbmFyIGNvbHVtbmFzIGlubmVjZXNhcmlhcy4KLSAgIFJlbm9tYnJhciBhbCBtZW5vcyBkb3MgY29sdW1uYXMgYSBub21icmVzIG3DoXMgY29ydG9zLgotICAgQ3JlYXIgMiB2YXJpYWJsZXM6CiAgICAtICAgVHJhbnNmZXJlbmNpYSBwcm9tZWRpby4KICAgIC0gICBob2dhcmVzIHF1ZSBubyBoYW4gcmVjaWJpZG8gZWwgcHJvZ3JhbWEgKHNlIG9idGllbmUgcmVzdGFuZG8gbG9zIGFib25hZG9zIGRlIGxvcyBhZmlsaWFkb3MpCi0gICBFeHBvcnRhciBsYSBudWV2YSB0YWJsYSBlbiB1biBjc3YKCiMjIyBQcmltZXJvIGltcG9ydGFtb3MgbGEgYmFzZSBkZSBkYXRvczoKCmBgYHtyfQojIENhcmdhbW9zIGxpYnJlcsOtYSBkcGx5cgpsaWJyYXJ5KGRwbHlyKQoKIyBDYXJnYW1vcyBsYSBiYXNlIGVuIHVuIG9iamV0byBxdWUgbGxhbWFyZW1vcyBqdW50b3MKanVudG9zIDwtCiAgcmVhZC5jc3YoCiAgICAiMDMtRGF0YXNldC1KVU5UT1MtaW5mb3JtYWNpb24tdXN1YXJpb3MtSS1iaW1lc3RyZS0yMDIwLmNzdiIsCiAgICBzZXAgPSAiOyIKICApIHw+CiAgamFuaXRvcjo6Y2xlYW5fbmFtZXMoKQoKIyBWZW1vcyBsYSBlc3RydWN0dXJhIGRlIGxhIGJhc2UKc3RyKGp1bnRvcykKYGBgCgojIyMgTHVlZ28gY3JlZW1vcyBudWVzdHJhIGJhc2UgZGUgZGF0b3MgcGFyYSB1bmEgcHJvdmluY2lhIGEgbnVlc3RyYSBlbGVjY2nDs24KCmBgYHtyfQojIENyZWFtb3MgbnVlc3RyYSBudWV2YSBiYXNlCmNoYWNoYXBveWFzIDwtIGp1bnRvcyB8PgogIGZpbHRlcigKICAgIGRlcGFydGFtZW50byA9PSAiQU1BWk9OQVMiICYKICAgICAgcHJvdmluY2lhID09ICJDSEFDSEFQT1lBUyIKICApIHw+CiAgc2VsZWN0KC14LCAtdWJpZ2VvLCAtZGVwYXJ0YW1lbnRvLCAtcHJvdmluY2lhKSB8PgogIHJlbmFtZSgKICAgIGFmaWxpYWRvcyA9IGhvZ2FyZXNfYWZpbGlhZG9zLAogICAgYWJvbmFkb3MgPSBob2dhcmVzX2Fib25hZG9zLAogICAgb2JqZXRpdm9zID0gbWllbWJyb3Nfb2JqZXRpdm9zCiAgKSB8PgogIG11dGF0ZSgKICAgIHRyYW5zZmVyZW5jaWFfcHJvbWVkaW8gPSB0cmFuc2ZlcmVuY2lhIC8gYWJvbmFkb3MsCiAgICBvbWl0aWRvcyA9IGFmaWxpYWRvcyAtIGFib25hZG9zCiAgKQoKIyBNaXJhbW9zIHJlc3VsdGFkbwpzdHIoY2hhY2hhcG95YXMpCmBgYAoKRmluYWxtZW50ZSBndWFyZGFtb3MgbnVlc3RyYSBudWV2YSB0YWJsYQoKYGBge3J9CndyaXRlLmNzdihjaGFjaGFwb3lhcywgImNoYWNoYXBveWFzLmNzdiIpCmBgYAoKCiMjIyBBaG9yYSBwYXNhbW9zIGEgcmVzcG9uZGVyIGxhcyBwcmVndW50YXM6CgoxLiDCv1F1w6kgZGlzdHJpdG9zIGVzdMOhbiBhZmlsaWFkb3MgZW4gZGljaGEgcHJvdmluY2lhPwoKYGBge3J9CmNoYWNoYXBveWFzX2Rpc3RyaXRvcyA8LSB1bmlxdWUoY2hhY2hhcG95YXMkZGlzdHJpdG8pCmBgYAoKYGBge3IsIG1lc3NhZ2U9RkFMU0V9CnByaW50KGNoYWNoYXBveWFzX2Rpc3RyaXRvcykKYGBgCgoyLiDCv0N1YW50b3MgYWZpbGlhZG9zIGVuIHRvdGFsIHRpZW5lIGxhIHByb3ZpbmNpYT8KCmBgYHtyfQpjaGFjaGFwb3lhc19hZmlsaWFkb3MgPC0gc3VtKGNoYWNoYXBveWFzJGFmaWxpYWRvcykKY2hhY2hhcG95YXNfYWZpbGlhZG9zCmBgYAoKMy4gwr9DdcOhbnRvcyBob2dhcmVzIGhhbiBzaWRvIGFib25hZG9zPwoKYGBge3J9CmNoYWNoYXBveWFzX2Fib25hZG9zIDwtIHN1bShjaGFjaGFwb3lhcyRhYm9uYWRvcykKY2hhY2hhcG95YXNfYWJvbmFkb3MKYGBgCgo0LiDCv0N1w6FudG8gaGEgc2lkbyBlbCB0b3RhbCBkZSBsYSB0cmFuc2ZlcmVuY2lhIGRlbCBwcm9ncmFtYSBqdW50b3MgZW4gZXNhIHByb3ZpbmNpYT8KCmBgYHtyfQp0b3RhbF90cmFuc2ZlcmVuY2lhIDwtIHN1bShjaGFjaGFwb3lhcyR0cmFuc2ZlcmVuY2lhKQp0b3RhbF90cmFuc2ZlcmVuY2lhCmBgYAoKNS4gwr9DdWFsIGhhIHNpZG8gbGEgdHJhbnNmZXJlbmNpYSBwcm9tZWRpbyBwb3IgaG9nYXI/IMK/Q3XDoWwgZXMgZWwgdmFsb3IgbcOtbmltbyB5IGN1w6FsIGVzIGVsIG3DoXhpbW8/CgpgYGB7cn0KdHJhbnNmZXJlbmNpYV9wcm9tZWRpbyA8LSBtZWFuKGNoYWNoYXBveWFzJHRyYW5zZmVyZW5jaWFfcHJvbWVkaW8pCnRyYW5zZmVyZW5jaWFfbWluIDwtIG1pbihjaGFjaGFwb3lhcyR0cmFuc2ZlcmVuY2lhX3Byb21lZGlvKQp0cmFuc2ZlcmVuY2lhX21heCA8LSBtYXgoY2hhY2hhcG95YXMkdHJhbnNmZXJlbmNpYV9wcm9tZWRpbykKCnRyYW5zZmVyZW5jaWFfcHJvbWVkaW8KdHJhbnNmZXJlbmNpYV9tYXgKdHJhbnNmZXJlbmNpYV9taW4KYGBgCgo2LiDCv0N1w6FudG9zIGhvZ2FyZXMgbm8gaGFuIHJlY2liaWRvIGFib25vcyBkZWwgcHJvZ3JhbWEganVudG9zPwoKYGBge3J9CmNoYWNoYXBveWFzX29taXRpZG9zIDwtIHN1bShjaGFjaGFwb3lhcyRvbWl0aWRvcykKY2hhY2hhcG95YXNfb21pdGlkb3MKYGBgCgo=</div>
 
 
 
