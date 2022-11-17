@@ -1,7 +1,7 @@
 ---
 title: "Solucionario Práctica 6"
-output: 
-  html_notebook: 
+output:
+  html_notebook:
     highlight: pygments
     theme: cerulean
 ---
@@ -32,7 +32,7 @@ library(dplyr)
 juntos <-
   read.csv(
     "03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv",
-    sep=";"
+    sep = ";"
   ) |>
   janitor::clean_names()
 
@@ -47,14 +47,15 @@ str(juntos)
 chachapoyas <- juntos |>
   filter(
     departamento == "AMAZONAS" &
-      provincia == "CHACHAPOYAS") |>      
-  select(-x, -ubigeo, -departamento, -provincia) |>   
-  rename(                                 
+      provincia == "CHACHAPOYAS"
+  ) |>
+  select(-x, -ubigeo, -departamento, -provincia) |>
+  rename(
     afiliados = hogares_afiliados,
     abonados = hogares_abonados,
     objetivos = miembros_objetivos
   ) |>
-  mutate(                                 
+  mutate(
     transferencia_promedio = transferencia / abonados,
     omitidos = afiliados - abonados
   )
@@ -76,10 +77,11 @@ write.csv(chachapoyas, "chachapoyas.csv")
 
 ```{r}
 chachapoyas_distritos <- unique(chachapoyas$distrito)
-chachapoyas_distritos
 ```
 
-
+```{r, message=FALSE}
+chachapoyas_distritos
+```
 
 2. ¿Cuantos afiliados en total tiene la provincia?
 
