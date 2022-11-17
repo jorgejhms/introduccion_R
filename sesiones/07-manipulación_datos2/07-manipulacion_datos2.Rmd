@@ -206,5 +206,5 @@ En este caso usaremos la función right_join. Esta función identificará la var
 
 ```{r, message=FALSE}
 
-right_join(resumen_cus_aqp, poblacion_datos, by = "provincia")
+right_join(resumen_cus_aqp, poblacion_datos)
 ```
