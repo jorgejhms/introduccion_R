@@ -4,9 +4,11 @@ author:
 - "Jorge Meneses y Paulo Peña"
 
 output:
-  slidy_presentation:
-    theme: simplex
+  ioslides_presentation:
     highlight: default
+    widescreen: true
+    incremental: true
+    smaller: true
 ---
 
 ```{r setup, echo=FALSE, message=FALSE}
@@ -30,22 +32,38 @@ Comencemos con dos funciones base, pero primero preparemos los datos:
 library(dplyr) # Carga dplyr en nuestro entorno
 library(janitor) # Paquete para limpiar los datos
 
-db_juntos <- read.csv("03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv", 
-                                sep = ";") |>
-  clean_names() #Carguemos la bbdd desde nuestros directorio
+db_juntos <- read.csv("03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv",
+  sep = ";"
+) |>
+  clean_names() # Carguemos la bbdd desde nuestros directorio
+```
 
-db_cusco <- db_juntos |> filter(departamento == "CUSCO") #creemos una tabla solo con los datos de Cusco
+---
 
-db_aqp <- db_juntos |> filter(departamento == "AREQUIPA") #creemos otra tabla solo con los datos de Arequipa
+```{r}
+# creemos una tabla solo con los datos de Cusco
+db_cusco <- db_juntos |> filter(departamento == "CUSCO")
 
-no_abonados_cus <- db_cusco$hogares_afiliados - db_cusco$hogares_abonados #creamos un vector nuevo de los hogares no abonados en Cusco
+# creemos otra tabla solo con los datos de Arequipa
+db_aqp <- db_juntos |> filter(departamento == "AREQUIPA")
+```
 
-no_abonados_aqp <- db_aqp$hogares_afiliados - db_aqp$hogares_abonados #creamos un vector nuevo de los hogares no abonados en Arequipa
+---
 
-length(no_abonados_cus) == count(db_cusco) # verifiquemos número de filas
+```{r}
+# creamos un vector nuevo de los hogares no abonados en Cusco
+no_abonados_cus <- db_cusco$hogares_afiliados - db_cusco$hogares_abonados
 
-length(no_abonados_aqp) == count(db_aqp) # verifiquemos número de filas
+# creamos un vector nuevo de los hogares no abonados en Arequipa
+no_abonados_aqp <- db_aqp$hogares_afiliados - db_aqp$hogares_abonados
+```
 
+---
+
+```{r}
+# verifiquemos número de filas
+length(no_abonados_cus) == count(db_cusco)
+length(no_abonados_aqp) == count(db_aqp)
 ```
 
 ## Juntando Columnas {.smaller}
@@ -78,25 +96,25 @@ Digamos que quiero juntar los datos de mi nueva base de Cusco con los datos de A
 ```{r, message=FALSE}
 # Juntando las bases
 
-# Primero verifiquemos los nombres de las columnas, notaremos que los nuevos vectores 
+# Primero verifiquemos los nombres de las columnas, notaremos que los nuevos vectores
 # en cada base tienen diferentes nombres, debemos de igualarlos
 
 db_cusco_nueva <- db_cusco_nueva |>
   rename(
-  no_abonados = no_abonados_cus
+    no_abonados = no_abonados_cus
   )
 
 db_aqp_nueva <- db_aqp_nueva |>
   rename(
-  no_abonados = no_abonados_aqp
+    no_abonados = no_abonados_aqp
   )
 ```
 
+---
+
 ```{r, message=FALSE}
 # Ahora sí podremos juntar las bases
-
 db_cus_aqp <- rbind(db_cusco_nueva, db_aqp_nueva)
-
 ```
 
 ```{r, eval=FALSE}
@@ -109,35 +127,44 @@ rbind(db_cusco, db_aqp_nueva)
 
 Ahora que tenemos una nueva base de datos digamos que quiero ver un resumen de no abonados por departamento, ¿cómo podría hacerlo?
 
-Usaremos dos funciones populares del paquete dplyr, group_by y summarise
+Usaremos dos funciones populares del paquete dplyr, `group_by()` y `summarise()`
 
 ```{r, message=FALSE}
 # Usemos la nueva base conjunta de Cusco y Arequipa
 
 db_cus_aqp |>
-  group_by(departamento) |> #coloco el nombre de la variable con la que deseo formar grupos
-  summarise(suma_no_abonados = sum(no_abonados)) #asigno un nombre a la variable de resumen
+  group_by(departamento) |> # coloco el nombre de la variable con la que deseo formar grupos
+  summarise(suma_no_abonados = sum(no_abonados)) # asigno un nombre a la variable de resumen
+```
 
+---
+
+```{r}
 # ¿Qué pasa si no coloco group_by?
-
 db_cus_aqp |>
   summarise(suma_no_abonados = sum(no_abonados))
 ```
+
+---
 
 Hagamos el mismo ejercicio pero con provincias.
 
 ```{r, message=FALSE}
 # Con Provincias
+db_cus_aqp |>
+  group_by(provincia) |>
+  summarise(suma_no_abonados = sum(no_abonados))
+```
+
+---
+
+```{r}
+# Ahora hagamos un doble agrupamiento, ¿a qué otro programa les hace acordar
+# estos ejercicios?
 
 db_cus_aqp |>
-  group_by(provincia) |> 
-  summarise(suma_no_abonados = sum(no_abonados)) 
-
-# Ahora hagamos un doble agrupamiento, ¿a qué otro programa les hace acordar estos ejercicios?
-
-db_cus_aqp |>
-  group_by(departamento, provincia) |> 
-  summarise(suma_no_abonados = sum(no_abonados)) 
+  group_by(departamento, provincia) |>
+  summarise(suma_no_abonados = sum(no_abonados))
 ```
 
 ## Funciones de resumen Parte II {.smaller}
@@ -149,17 +176,21 @@ La función summary también nos permite extraer esta información.
 # Con Provincias
 
 db_cus_aqp |>
-  group_by(provincia) |> 
-  summarise(suma_no_abonados = sum(no_abonados),
-            prom_transferencias = mean(transferencia/hogares_abonados)) 
+  group_by(provincia) |>
+  summarise(
+    suma_no_abonados = sum(no_abonados),
+    prom_transferencias = mean(transferencia / hogares_abonados)
+  )
 
 # Ahora hagamos un doble agrupamiento, ¿a qué otro programa les hace acordar estos ejercicios?
 # Adicionalmente ahora guardaremos esta nueva tabla
 
 resumen_cus_aqp <- db_cus_aqp |>
-  group_by(departamento, provincia) |> 
-  summarise(suma_no_abonados = sum(no_abonados),
-            prom_transferencias = mean(transferencia/hogares_abonados)) 
+  group_by(departamento, provincia) |>
+  summarise(
+    suma_no_abonados = sum(no_abonados),
+    prom_transferencias = mean(transferencia / hogares_abonados)
+  )
 ```
 
 ## Funciones para cruzar datos - Parte I {.smaller}
@@ -181,7 +212,6 @@ db_poblacion <- read.csv(archivo_pob, sep = ",") %>%
 # Explora para ver mi información
 
 str(db_poblacion)
-
 ```
 
 ## Funciones para cruzar datos - Parte II {.smaller}
@@ -197,7 +227,6 @@ poblacion_datos <- db_poblacion |>
   summarise(poblacion = sum(cantidad))
 
 poblacion_datos
-
 ```
 
 ## Funciones para cruzar datos - Parte III {.smaller}
