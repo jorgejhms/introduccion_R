@@ -12,7 +12,7 @@ output:
 ---
 
 ```{r setup, echo=FALSE, message=FALSE}
-here::i_am("sesiones/07-manipulación_datos/07-manipulacion_datos2.Rmd")
+here::i_am("sesiones/07-manipulación_datos2/07-manipulacion_datos2.Rmd")
 ```
 
 ## Manipulación de datos - Parte 2
