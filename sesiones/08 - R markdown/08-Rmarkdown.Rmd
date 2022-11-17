@@ -1,0 +1,145 @@
+---
+title: "Generando reportes con Rmarkdown"
+output:
+  ioslides_presentation:
+    highlight: default
+    widescreen: true
+    incremental: true
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+
+here::i_am("sesiones/08 - R markdown/08-Rmarkdown.Rmd")
+```
+
+## ¿Qué es R Markdown? {.smaller}
+
+<div class="columns-2">
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_graphics(here::here("sesiones", "08 - R markdown", "rmarkdown.png"))
+```
+
+**Rmarkdown** es un formato para la creación de documentos de texto (como Ms Word) con la posibilidad de usar código R para generar tablas, gráficos o incluso código interactivo. De esa forma, podemos usar solo una herramienta para crear informes o reportes.
+
+Existen múltiples a los que podemos exportar, entre los que se encuentran:
+
+-   Reportes o informes.
+-   Cuadernos de apuntes (R Notebook)
+-   Presentaciones de diapositivas
+-   Páginas webs.
+-   Documentos en PDF.
+
+</div>
+
+## ¿Porqué usar Rmarkdown?
+
+-   Nos permite crear un documento reproducible y verificable: un solo archivo incluye el texto y el código para generar los datos, análisis, gráficos, etc.
+-   Ideal para reportes repetitivos (informes semanales o mensuales). Solo cambiamos la base de datos de origin y repetimos el nuevo reporte.
+-   El mismo documento puede ser exportado en diferentes formatos.
+
+## Crear documento Rmarkdown
+
+Los documentos Rmarkdown (.Rmd) se crean desde el menu "File"
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_graphics(here::here("sesiones", "08 - R markdown", "menu.png"))
+```
+
+## Creando un documento {.smaller}
+
+<div class="columns-2">
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("sesiones", "08 - R markdown", "menu crear.png"))
+```
+
+Al colocar crear nos aparece una ventana donde podemos agregar los metadatos del documento (título, autor, fecha), así como los formatos de exportación (HTML, PDF, Word). El formato de exportación lo podemos cambiar luego. En el lado izquierdo nos permite escoger si queremos hacer un documento, una presentación, una aplicación Shiny, o usar una plantilla que hayamos creado anteriormente
+
+</div>
+
+## Editor codigo
+
+<div class="columns-2">
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("sesiones", "08 - R markdown", "editor codigo.png"))
+```
+
+Al crear el documento nos aparece un documento de ejemplo como el siguiente:
+
+</div>
+
+## Editor visual
+
+<div class="columns-2">
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("sesiones", "08 - R markdown", "editor visual.png"))
+```
+
+También tenemos disponible un editor visual, que lo podemos usar como MS Word.
+
+</div>
+
+## Chunk o pedazo de código{.smaller}
+
+<div class="columns-2">
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("sesiones", "08 - R markdown", "chunk.png"))
+```
+
+En Rmarkdown podemos intercalar nuestro texto con pedazos (chunk) de código R. Cuando insertemos un chunk, nos aparecen botones en el lado derecho donde podemos ejecutar el codigo del chunk, ejecutar los códigos anteriores, o cambiar las opciones del código. El resultado del código se muestra inmediatamente debajo del mismo.
+
+</div>
+
+## Knit
+
+<div class="columns-2">
+
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("sesiones", "08 - R markdown", "knit.png"))
+```
+
+Al presionar el botón knit podemos ver las opciones de exportación.
+
+</div>
+
+## Cuadernos (R notebook)
+
+<div class="columns-2">
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("sesiones", "08 - R markdown", "rnotebook.png"))
+```
+
+Los cuadernos de R (R notebook) funcionan igual que cualquier otro documento Rmarkdown. La única diferencia es que nos permite ejecutar y mostrar codigo más rápido.
+
+</div>
+
+## Vista previa cuaderno
+
+<div class="columns-2">
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("sesiones", "08 - R markdown", "preview.png"))
+```
+
+Cuando trabajamos en un cuaderno, nos aparece el botón "Preview" o vista previa. Eso nos permite tener una vista de nuestro documento rápidamente.
+
+</div>
+
+## Ejercicio
+
+Crear un cuaderno (R Notebook) con todo el contenido del curso hasta la sesión de hoy. El mismo debe incluir los siguientes capítulos:
+
+1. ¿Qué es R?
+2. Rstudio
+3. Sintaxis básica de R
+4. Objetos complejos: Vectores, listas, dataframes.
+5. Importación de datos
+6. Manipulación de datos I
+7. Manipulación de datos II
+
+Cada capitulo debe combinar sus propios apuntes, con código R que muestre los ejemplos. Pueden tomar como referencia los PPT. A partir de la clase siguiente, deben seguir las clases usando el mismo cuaderno.

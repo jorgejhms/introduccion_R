@@ -1,0 +1,123 @@
+---
+title: "Solucionario Práctica 6"
+output: 
+  html_notebook: 
+    highlight: pygments
+    theme: cerulean
+---
+
+```{r setup, message=FALSE, echo=FALSE}
+here::i_am("sesiones/08 - R markdown/solucionario practica 6.Rmd")
+```
+
+## Ejercicio
+
+Usando la misma base de datos creamos una nueva tabla:
+
+-   Filtrar los datos para un departamento y provincia de su elección.
+-   Eliminar columnas innecesarias.
+-   Renombrar al menos dos columnas a nombres más cortos.
+-   Crear 2 variables:
+    -   Transferencia promedio.
+    -   hogares que no han recibido el programa (se obtiene restando los abonados de los afiliados)
+-   Exportar la nueva tabla en un csv
+
+### Primero importamos la base de datos:
+
+```{r}
+# Cargamos librería dplyr
+library(dplyr)
+
+# Cargamos la base en un objeto que llamaremos juntos
+juntos <-
+  read.csv(
+    "03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.csv",
+    sep=";"
+  ) |>
+  janitor::clean_names()
+
+# Vemos la estructura de la base
+str(juntos)
+```
+
+### Luego creemos nuestra base de datos para una provincia a nuestra elección
+
+```{r}
+# Creamos nuestra nueva base
+chachapoyas <- juntos |>
+  filter(
+    departamento == "AMAZONAS" &
+      provincia == "CHACHAPOYAS") |>      
+  select(-x, -ubigeo, -departamento, -provincia) |>   
+  rename(                                 
+    afiliados = hogares_afiliados,
+    abonados = hogares_abonados,
+    objetivos = miembros_objetivos
+  ) |>
+  mutate(                                 
+    transferencia_promedio = transferencia / abonados,
+    omitidos = afiliados - abonados
+  )
+
+# Miramos resultado
+str(chachapoyas)
+```
+
+Finalmente guardamos nuestra nueva tabla
+
+```{r}
+write.csv(chachapoyas, "chachapoyas.csv")
+```
+
+
+### Ahora pasamos a responder las preguntas:
+
+1. ¿Qué distritos están afiliados en dicha provincia?
+
+```{r}
+chachapoyas_distritos <- unique(chachapoyas$distrito)
+chachapoyas_distritos
+```
+
+
+
+2. ¿Cuantos afiliados en total tiene la provincia?
+
+```{r}
+chachapoyas_afiliados <- sum(chachapoyas$afiliados)
+chachapoyas_afiliados
+```
+
+3. ¿Cuántos hogares han sido abonados?
+
+```{r}
+chachapoyas_abonados <- sum(chachapoyas$abonados)
+chachapoyas_abonados
+```
+
+4. ¿Cuánto ha sido el total de la transferencia del programa juntos en esa provincia?
+
+```{r}
+total_transferencia <- sum(chachapoyas$transferencia)
+total_transferencia
+```
+
+5. ¿Cual ha sido la transferencia promedio por hogar? ¿Cuál es el valor mínimo y cuál es el máximo?
+
+```{r}
+transferencia_promedio <- mean(chachapoyas$transferencia_promedio)
+transferencia_min <- min(chachapoyas$transferencia_promedio)
+transferencia_max <- max(chachapoyas$transferencia_promedio)
+
+transferencia_promedio
+transferencia_max
+transferencia_min
+```
+
+6. ¿Cuántos hogares no han recibido abonos del programa juntos?
+
+```{r}
+chachapoyas_omitidos <- sum(chachapoyas$omitidos)
+chachapoyas_omitidos
+```
+
