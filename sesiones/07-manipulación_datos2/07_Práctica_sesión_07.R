@@ -117,5 +117,5 @@ poblacion_datos <- db_poblacion |>
 
 ## ahora juntaré con right_join la tabla anterior
 
-right_join(resumen_cus_aqp, poblacion_datos, by ="provincia")
+right_join(resumen_cus_aqp, poblacion_datos)
 

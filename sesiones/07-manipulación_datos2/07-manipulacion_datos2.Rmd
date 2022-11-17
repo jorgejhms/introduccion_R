@@ -38,7 +38,6 @@ db_juntos <- read.csv("03-Dataset-JUNTOS-informacion-usuarios-I-bimestre-2020.cs
   clean_names() # Carguemos la bbdd desde nuestros directorio
 ```
 
----
 
 ```{r}
 # creemos una tabla solo con los datos de Cusco
@@ -57,8 +56,6 @@ no_abonados_cus <- db_cusco$hogares_afiliados - db_cusco$hogares_abonados
 # creamos un vector nuevo de los hogares no abonados en Arequipa
 no_abonados_aqp <- db_aqp$hogares_afiliados - db_aqp$hogares_abonados
 ```
-
----
 
 ```{r}
 # verifiquemos número de filas
@@ -109,8 +106,6 @@ db_aqp_nueva <- db_aqp_nueva |>
     no_abonados = no_abonados_aqp
   )
 ```
-
----
 
 ```{r, message=FALSE}
 # Ahora sí podremos juntar las bases

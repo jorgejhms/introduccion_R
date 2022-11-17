@@ -3222,8 +3222,6 @@ db_juntos &lt;- read.csv(&quot;03-Dataset-JUNTOS-informacion-usuarios-I-bimestre
 ) |&gt;
   clean_names() # Carguemos la bbdd desde nuestros directorio</pre>
 
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
-
 <pre class = 'prettyprint lang-r'># creemos una tabla solo con los datos de Cusco
 db_cusco &lt;- db_juntos |&gt; filter(departamento == &quot;CUSCO&quot;)
 
@@ -3237,8 +3235,6 @@ no_abonados_cus &lt;- db_cusco$hogares_afiliados - db_cusco$hogares_abonados
 
 # creamos un vector nuevo de los hogares no abonados en Arequipa
 no_abonados_aqp &lt;- db_aqp$hogares_afiliados - db_aqp$hogares_abonados</pre>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
 
 <pre class = 'prettyprint lang-r'># verifiquemos número de filas
 length(no_abonados_cus) == count(db_cusco)</pre>
@@ -3493,7 +3489,8 @@ poblacion_datos</pre>
 ##  8 AREQUIPA     LA UNION       15544
 ##  9 CUSCO        ACOMAYO        28299
 ## 10 CUSCO        ANTA           57547
-## # … with 11 more rows</pre>
+## # … with 11 more rows
+## # ℹ Use `print(n = ...)` to see more rows</pre>
 
 </article></slide><slide class=""><hgroup><h2>Funciones para cruzar datos - Parte III</h2></hgroup><article  id="funciones-para-cruzar-datos---parte-iii" class="smaller smaller">
 
@@ -3515,7 +3512,8 @@ poblacion_datos</pre>
 ##  8 CUSCO        ANTA                    -18                198.     57547
 ##  9 CUSCO        CALCA                    36                198.     75852
 ## 10 CUSCO        CANAS                  -102                199.     40160
-## # … with 11 more rows</pre></article></slide>
+## # … with 11 more rows
+## # ℹ Use `print(n = ...)` to see more rows</pre></article></slide>
 
 
   <slide class="backdrop"></slide>
