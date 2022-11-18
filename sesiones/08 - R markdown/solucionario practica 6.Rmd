@@ -1,6 +1,8 @@
 ---
 title: "Solucionario Práctica 6"
 output:
+  html_document:
+    df_print: paged
   html_notebook:
     highlight: pygments
     theme: cerulean

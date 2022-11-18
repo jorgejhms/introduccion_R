@@ -35,7 +35,7 @@ Existen múltiples a los que podemos exportar, entre los que se encuentran:
 ## ¿Porqué usar Rmarkdown?
 
 -   Nos permite crear un documento reproducible y verificable: un solo archivo incluye el texto y el código para generar los datos, análisis, gráficos, etc.
--   Ideal para reportes repetitivos (informes semanales o mensuales). Solo cambiamos la base de datos de origin y repetimos el nuevo reporte.
+-   Ideal para reportes repetitivos (informes semanales o mensuales). Solo cambiamos la base de datos de origen y repetimos el nuevo reporte.
 -   El mismo documento puede ser exportado en diferentes formatos.
 
 ## Crear documento Rmarkdown
