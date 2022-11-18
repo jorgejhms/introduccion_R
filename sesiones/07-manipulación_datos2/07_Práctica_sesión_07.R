@@ -31,12 +31,6 @@ db_cusco_nueva <- cbind(db_cusco, no_abonados_cus)
 
 db_aqp_nueva <- cbind(db_aqp, no_abonados_aqp)
 
-# Juntando filas----
-
-db_cusco_nueva <- cbind(db_cusco, no_abonados_cus)
-
-db_aqp_nueva <- cbind(db_aqp, no_abonados_aqp)
-
 # Tratando de juntar vectores con diferentes dimensiones----
 
 cbind(db_cusco, no_abonados_aqp)
