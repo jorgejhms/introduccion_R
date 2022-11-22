@@ -1,0 +1,14 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Capitulo 1: ¿Que es R?
+
+R es un lenguaje de programación
+
+```{r}
+# Guardar variables
+mi_variable <- 5
+mi_variable
+```
