@@ -65,7 +65,7 @@ Esta es la parte que va entre llaves. Son todas las operaciones que realizará n
 
 varianza <- function(variable){
   sum((variable-mean(variable))^2) / 
-    (lenght(variable) - 1)
+    (length(variable) - 1)
 }
 
 ```
@@ -76,12 +76,12 @@ Podemos separar las operaciones por partes
 
 varianza <- function(variable){
   a <- sum((variable-mean(variable))^2)
-  b <- lenght(variable) - 1
+  b <- length(variable) - 1
   
   return (a / b)
 }
 
-# con el comenado return, nos aseguramos que la función nos devuelva solo el resultado final
+# con el comando return, nos aseguramos que la función nos devuelva solo el resultado final
 ```
 
 ## Comando if {.smaller}
