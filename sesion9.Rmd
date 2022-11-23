@@ -1,0 +1,82 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+# Librerias
+library(dplyr)
+library(ggplot2)
+```
+
+# Gráfico de barras
+
+```{r}
+# Creamos una data para simular
+data_barras <- data.frame(
+    nombre = c("A", "B", "C", "D", "E"),
+    valor = c(3, 12, 5, 18, 45)
+)
+
+# Gráfico de barras
+ggplot(data_barras, aes(x = nombre, y = valor)) +
+    geom_bar(stat = "identity")
+```
+
+```{r}
+ggplot(data_barras, aes(x = nombre, y = valor)) +
+    geom_bar(
+        stat = "identity",
+        color = "blue", # Algunos colores básicos se pueden llamar por nombre
+        fill = rgb(0.1, 0.4, 0.5, 0.7) # Para otros colores usamos su código
+    )
+```
+```{r}
+ggplot(data_barras, aes(x = nombre, y = valor, fill = nombre)) +
+    geom_bar(stat = "identity") +
+    scale_fill_brewer(palette = "Set1") +
+    labs(
+        title = "Gráfico de barras",
+        x = "Departamento",
+        y = "Edad promedio"
+    )
+```
+
+# Gráfico de línea
+
+```{r}
+# Creamos data aleatoria
+valores_x <- 1:10
+valores_y <- cumsum(rnorm(10))
+data_linea <- data.frame(valores_x, valores_y)
+```
+
+
+```{r}
+ggplot(data_linea, aes(x = valores_x, y = valores_y)) +
+  geom_line(
+        color = "#69b3a2",
+        linewidth = 2, # ancho de línea
+        alpha = 0.9, # transparencia de linea
+        linetype = 4 # tipo de línea
+    )
+  
+```
+
+# Gráfico de torta
+
+```{r}
+# Creamos data de ejemplo
+data_torta <- data.frame(
+    group = LETTERS[1:5],
+    value = c(13, 7, 9, 21, 2)
+)
+```
+
+```{r}
+ggplot(data_torta, aes(x = "", y = value, fill = group)) +
+    geom_bar(stat = "identity", width = 1) +
+    coord_polar("y", start = 0) +
+    theme_void()
+```
+
