@@ -1,0 +1,139 @@
+---
+title: "Visualización de datos con ggplot2 - Parte 2"
+author:
+- "Jorge Meneses y Paulo Peña"
+
+output:
+  ioslides_presentation:
+    highlight: default
+    widescreen: true
+    incremental: true
+    smaller: true
+---
+
+## ¿Qué veremos en la sesión de hoy?
+
+* Uso de funciones con ggplot2.
+* Histograma
+* Gráfico de cajas (boxplot)
+* Diagrama de dispersión (scatterplot)
+
+## Funciones con ggplot2
+
+Como hemos visto en la sesión pasada, el uso de funciones es una gran herramienta para la creación de nuestros propios comandos para repetir varias veces la misma operación, sea esta la aplicación de una formula o la repeteción de un conjunto de pasos.
+
+Un uso práctico de las funciones es la producción de gráficas o visualizaciones. En muchas ocasiones, queremos usar el mismo gráfico o gráficos similares con diferentes variables. En lugar de repetir el mismo código una y otra vez (lo que es propoenso a errores), podemos crear una función con los comandos para nuestro gráfico.
+
+## Veamos un ejemplo práctico
+
+```{r}
+# Cargamos librerias
+library(dplyr)
+library(ggplot2)
+library(janitor)
+
+# Cargamos data de censo de salud de la municipalidad de San Borja
+censo_salud <- read.csv("sesiones/11-ggplot2-parte-2/censo_salud_sb.csv") |>
+  clean_names()
+```
+
+## Miramos nuestros datos
+
+```{r}
+str(censo_salud)
+```
+
+---
+
+Tenemos 50 494 observaciones y 44 variables. Veamos cuantos casos tenemos por sexo
+
+```{r}
+tabla_sexo <- count(censo_salud, sexo)
+str(tabla_sexo)
+```
+
+Tenemos tres categorias, femenino, masculino e indeterminado.
+
+## Creando una función con ggplot2
+
+Crear una función con ggplot2 es igual que crear cualquier función. Creemos una función para un gráfico de torta
+
+```{r}
+grafico_torta <- function(dataset, grupos, valores) {
+  ggplot(dataset, aes(x = "", y = {{ valores }}, fill = {{ grupos }})) +
+    geom_bar(stat = "identity", width = 1) +
+    coord_polar("y", start = 0) +
+    theme_void()
+}
+```
+
+## Probemos nuestra función
+
+Como nuestra función produce un ggplot2, podemos seguir aumentando capas usando el operador `+`.
+
+```{r}
+grafico_torta(tabla_sexo, sexo, n) +
+  labs(title = "Grafico torta")
+```
+
+# Histograma
+
+## ¿Qué es un histograma?
+
+Aunque se asemeja a un gráfico de barras, un histograma es una representación de la distribución de una variable numérica. En un gráfico de barras, las columnas se suelen representar separadas unas de otras, para indicar que se tratan de categorías discretas. En cambio, un histograma se representan juntas, para indicar que es una variable continua. Adicionalmente se puede agregar una curva normal sobre el mismo.
+
+```{r}
+# Histograma simple
+ggplot(censo_salud, aes(x = edad)) +
+  geom_histogram()
+```
+
+## Agregando opciones
+
+Al igual que con otros tipos de gráficos, podemos agregar opciones para los colores y bordes
+
+```{r}
+ggplot(censo_salud, aes(x = edad)) +
+  geom_histogram(
+    binwidth = 5, # Ancho de columna en la unidad de la variable
+    fill = "yellow", # color de relleno
+    color = "black" # color de borde
+  )
+```
+
+## Agregando curva de normal o densidad
+
+```{r}
+ggplot(censo_salud, aes(x = edad, y = after_stat(density))) +
+  geom_histogram(
+    binwidth = 5,
+    fill = "yellow", # color de relleno
+    color = "black" # color de borde
+  ) +
+  geom_density(
+    size = 1, # ancho de línea
+    color = "red" # color de línea
+  )
+```
+
+## Guardamos nuestro comando en una función
+
+```{r}
+histograma <- function(dataset, variable) {
+  ggplot(dataset, aes(x = {{ variable }}, y = after_stat(density))) +
+    geom_histogram(
+      fill = "yellow", # color de relleno
+      color = "black" # color de borde
+    ) +
+    geom_density(
+      size = 1, # ancho de línea
+      color = "red" # color de línea
+    )
+}
+```
+
+## Probamos nuestra función
+
+```{r}
+histograma(censo_salud, peso_actual)
+```
