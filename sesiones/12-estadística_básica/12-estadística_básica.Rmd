@@ -17,7 +17,7 @@ here::i_am("sesiones/12-estadística_básica/12-estadística_básica.Rmd")
 
 ## Funciones Estadísticas en R
 
-R es lenguaje bastante conocido por su buen manejo de análisis estadístico. En esta sesión revisaremos el uso de las funcione estadísticas más relevantes y que son usadas con mayor frecuencia.
+R es lenguaje bastante conocido por su buen manejo de análisis estadístico. En esta sesión revisaremos el uso de las funciones estadísticas más relevantes y que son usadas con mayor frecuencia.
 
 Primero, una lista de comandos importantes de recordar:
 
@@ -29,7 +29,7 @@ max() # el máximo de un conjunto de datos
 sd() # la desviación estándar de un conjunto de datos
 var() # la variación muestral de un conjunto de datos
 median() # la mediana de n conjunto de datos
-table() # tabla de 
+table() # tabla de frecuencia
 sum() #suma los puntajes
 ```
 
@@ -61,7 +61,7 @@ sum(inei$cantidad) # para saber el total de la población
 
 ## Usando tablas de resumen {.smaller}
 
-Digamos que ahora quiero saber la cantidad de pobladores según departamento o edad, quiero armar una tabla de la misma. Para eso existe la posibilidad de crear tablas de contingencia.
+Digamos que ahora quiero saber la cantidad de pobladores según departamento o edad, quiero armar una tabla de la misma. Para eso existe la posibilidad de crear tablas resumen.
 
 Debido a que la base de datos de INEI es una base resumen en sí, la mejor opción es usar las funciones de dplyr.
 
