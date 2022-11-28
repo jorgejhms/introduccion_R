@@ -1,0 +1,244 @@
+---
+title: "Visualización de datos con ggplot2 - Parte 2"
+author:
+- "Jorge Meneses y Paulo Peña"
+
+output:
+  ioslides_presentation:
+    highlight: default
+    widescreen: true
+    incremental: true
+    smaller: true
+---
+
+## ¿Qué veremos en la sesión de hoy?
+
+* Uso de funciones con ggplot2.
+* Histograma
+* Gráfico de cajas (boxplot)
+* Diagrama de dispersión (scatterplot)
+
+## Funciones con ggplot2
+
+Como hemos visto en la sesión pasada, el uso de funciones es una gran herramienta para la creación de nuestros propios comandos para repetir varias veces la misma operación, sea esta la aplicación de una formula o la repeteción de un conjunto de pasos.
+
+Un uso práctico de las funciones es la producción de gráficas o visualizaciones. En muchas ocasiones, queremos usar el mismo gráfico o gráficos similares con diferentes variables. En lugar de repetir el mismo código una y otra vez (lo que es propoenso a errores), podemos crear una función con los comandos para nuestro gráfico.
+
+## Veamos un ejemplo práctico
+
+```{r, message=FALSE}
+# Cargamos librerias
+library(dplyr)
+library(ggplot2)
+library(janitor)
+
+# Cargamos data de censo de salud de la municipalidad de San Borja
+censo_salud <- read.csv("censo_salud_sb.csv") |>
+  clean_names()
+```
+
+## Miramos nuestros datos
+
+```{r}
+str(censo_salud)
+```
+
+---
+
+Tenemos 50 494 observaciones y 44 variables. Veamos cuantos casos tenemos por sexo
+
+```{r}
+tabla_sexo <- count(censo_salud, sexo)
+str(tabla_sexo)
+```
+
+Tenemos tres categorias, femenino, masculino e indeterminado.
+
+# Gráfico de torta
+
+## Creando una función con ggplot2
+
+Crear una función con ggplot2 es igual que crear cualquier función. Creemos una función para un gráfico de torta
+
+```{r, out.width="98%"}
+grafico_torta <- function(dataset, grupos, valores) {
+  ggplot(dataset, aes(x = "", y = {{ valores }}, fill = {{ grupos }})) +
+    geom_bar(stat = "identity", width = 1) +
+    coord_polar("y", start = 0) +
+    theme_void()
+}
+```
+
+## Probemos nuestra función
+
+<div class="columns-2">
+
+Como nuestra función produce un ggplot2, podemos seguir aumentando capas usando el operador `+`.
+
+```{r, out.width="98%"}
+grafico_torta(tabla_sexo, sexo, n) +
+  labs(title = "Sexo de los encuestados")
+```
+
+</div>
+
+# Histograma
+
+## ¿Qué es un histograma?
+
+<div class="columns-2">
+
+Aunque se asemeja a un gráfico de barras, un histograma es una representación de la distribución de una variable numérica. En un gráfico de barras, las columnas se suelen representar separadas unas de otras, para indicar que se tratan de categorías discretas. En cambio, un histograma se representan juntas, para indicar que es una variable continua. Adicionalmente se puede agregar una curva normal sobre el mismo.
+
+```{r, out.width="98%"}
+# Histograma simple
+ggplot(censo_salud, aes(x = edad)) +
+  geom_histogram()
+```
+
+</div>
+
+## Agregando opciones
+
+<div class="columns-2">
+
+Al igual que con otros tipos de gráficos, podemos agregar opciones para los colores y bordes
+
+```{r, out.width="98%"}
+ggplot(censo_salud, aes(x = edad)) +
+  geom_histogram(
+    binwidth = 5, # Ancho de columna en la unidad de la variable
+    fill = "yellow", # color de relleno
+    color = "black" # color de borde
+  )
+```
+
+</div>
+
+## Guardamos nuestro comando en una función
+
+```{r, out.width="98%"}
+histograma <- function(dataset, variable, binwidth = NULL) { # Creamos un valor por defecto para binwith
+  ggplot(dataset, aes(x = {{ variable }})) +
+    geom_histogram(
+      binwidth = {{ binwidth }},
+      fill = "yellow", # color de relleno
+      color = "black" # color de borde
+    )
+}
+```
+
+## Probamos nuestra función
+
+<div class="columns-2">
+
+```{r, out.width="98%"}
+histograma(censo_salud, peso_actual) +
+  labs(title = "Distribución del peso en los encuestados")
+```
+
+</div>
+
+## Probamos en otra variable numérica
+
+<div class="columns-2">
+
+```{r, out.width="98%"}
+histograma(censo_salud, numero_personas, 1) +
+  labs(title = "Distribución de personas en los hogares encuestados")
+```
+
+</div>
+
+# Gráfico de cajas
+
+## ¿Qué es el gráfico de cajas?
+
+El grafico de cajas, al igual que el histograma, nos permite visualizar la distribución de una variable numerica. La bordes de la caja nos indican el Rango Intercuartil, la linea central nos indica el promedio o cuartil 50, y los puntos los posibles *outliers* o datos que parecen salir de la distribución.
+
+```{r, echo=FALSE, out.width="98%"}
+knitr::include_graphics("boxplot_explanation.png")
+```
+
+## Boxplot usando ggplot2
+
+<div class="columns-2">
+
+El boxplot más simple lo creamos agregando el comando `geom_boxplot()` a nuestro ggplot2.
+
+```{r, out.width="98%"}
+ggplot(censo_salud, aes(y = edad)) +
+  geom_boxplot()
+```
+
+</div>
+
+## Separando grupos
+
+<div class="columns-2">
+
+El boxplot por lo general es bastante usado para comparar una misma variable en grupos diferentes. Por ejemplo, dividamos las edades por sexo
+
+```{r, out.width="98%"}
+ggplot(censo_salud, aes(y = edad, x = sexo, fill = sexo)) +
+  geom_boxplot( # agregamos algunas opciones de colores
+    color = "black",
+    linewidth = 1,
+    alpha = 0.5
+  ) +
+  labs(title = "Distribución de edad según sexo del encuestado")
+```
+
+</div>
+
+# Diagrama de dispersión (scatterplot)
+
+## ¿Qué es un diagrama de dispersión?
+
+<div class="columns-2">
+
+Un diagrama de dispersión nos permite ver la relación entre dos variables numéricas. Esto nos permite ver si existe una correlación entre ambas. En ggplot2 creamos un scatterplot de la siguiente manera:
+
+```{r, out.width="98%"}
+# Cargaremos la data del sistema de información del estado nutricional de niños
+# y gestantes para la región Cusco
+
+ninos_cusco <- read.csv(
+  "his-ninos-2021/HB_2021/Niคos CUSCO.csv"
+) |>
+  clean_names()
+
+ggplot(ninos_cusco, aes(x = edad_meses, y = peso)) +
+  geom_point()
+```
+
+</div>
+
+## Eliminemos outliers de la Visualización
+
+<div class="columns-2">
+
+```{r, out.width="98%"}
+ggplot(ninos_cusco, aes(x = edad_meses, y = peso)) +
+  geom_point() +
+  ylim(0, 250) # Definimos los límites del eje y
+```
+
+</div>
+
+## Agregamos linea de tendencia
+
+<div class="columns-2">
+
+```{r, out.width="98%"}
+ggplot(ninos_cusco, aes(x = edad_meses, y = peso)) +
+  geom_point() +
+  geom_smooth(method = lm, color = "red", se = FALSE) +
+  ylim(0, 250)
+```
+
+</div>
+
+## Ejercicio
+
+Crear un gráfico de cada tipo, con una base de datos que creen o descarguen.
