@@ -1,0 +1,187 @@
+---
+title: "Funciones de Estadística Multivariada y de Contraste"
+author:
+- "Jorge Meneses y Paulo Peña"
+
+output:
+  ioslides_presentation:
+    highlight: default
+    widescreen: true
+    incremental: true
+    smaller: true
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+here::i_am("sesiones/12-estadística_básica/12-estadística_básica.Rmd")
+```
+
+## Funciones Estadísticas en R
+
+R es lenguaje bastante conocido por su buen manejo de análisis estadístico. En esta sesión revisaremos el uso de las funciones estadísticas más relevantes y que son usadas con mayor frecuencia.
+
+Primero, una lista de comandos importantes de recordar:
+
+```{r, eval=FALSE}
+summary() # Resumen estadístico cuando son variables numéricas o integrales
+mean() # El promedio de variables numéricas o integrales
+min() # el mínimo de un conjunto de datos
+max() # el máximo de un conjunto de datos
+sd() # la desviación estándar de un conjunto de datos
+var() # la variación muestral de un conjunto de datos
+median() # la mediana de n conjunto de datos
+table() # tabla de frecuencia
+sum() #suma los puntajes
+```
+
+## Ejemplo- Cargando datos
+
+Utilicemos la base de datos de la tabla de población INEI para poner estos comando en acción.
+
+```{r, message = FALSE}
+
+# primero cargamos las librerías que utilizaremos
+library(dplyr)
+library(janitor)
+
+#segundo cargamos los datos y limpiamos los nombres
+inei <- read.csv("TB_POBLACION_INEI.csv") |>
+  clean_names() 
+```
+
+## Ejemplo - Usando las funciones {.smaller}
+
+```{r, message = FALSE}
+
+# ahora probemos las funciones
+summary(inei$cantidad)
+mean(inei$cantidad) 
+
+sum(inei$cantidad) # para saber el total de la población
+```
+
+## Usando tablas de resumen {.smaller}
+
+Digamos que ahora quiero saber la cantidad de pobladores según departamento o edad, quiero armar una tabla de la misma. Para eso existe la posibilidad de crear tablas resumen.
+
+Debido a que la base de datos de INEI es una base resumen en sí, la mejor opción es usar las funciones de dplyr.
+
+```{r, message = FALSE}
+
+# probemos con departamento
+
+tabla_1 <- inei |>
+  group_by(departamento) |>
+  summarise(cantidad = sum(cantidad)) |>
+  arrange(-cantidad) # para ordenar lo datos
+
+tabla_1
+```
+
+## Graficando nuestros resultados {.smaller}
+
+```{r, message = FALSE}
+library(ggplot2)
+
+tabla_1 |> ggplot(aes(x = reorder(departamento, cantidad), y = cantidad)) +
+  geom_bar(stat = "identity", width = 0.8) + # con width reduzco el ancho de barras
+  theme_classic(base_size = 8) + # uso una plantilla y con base_size reduzco la letra
+  xlab("") + #retiro el título del eje inferior
+  coord_flip()
+```
+
+## Resumen datos por edad {.smaller}
+
+```{r, message = FALSE}
+
+# probemos con departamento
+
+tabla_2 <- inei |>
+  group_by(edad_anio) |>
+  summarise(cantidad = sum(cantidad)) |>
+  arrange(-cantidad) # para ordenar lo datos
+
+tabla_2
+```
+
+## Gráfico de barras para la cantidad de pobladores por edad {.smaller}
+
+```{r, message = FALSE}
+library(ggplot2)
+
+tabla_2 |> ggplot(aes(x = reorder(edad_anio, cantidad), y = cantidad)) +
+  geom_bar(stat = "identity", width = 0.8) + 
+  theme_classic(base_size = 8) + 
+  xlab("") +
+  coord_flip()
+```
+
+## Base de Datos Ordenada {.smaller}
+
+Una base de datos ordenada o "tidy" es una base donde cada data nuevo se registra en una fila. En el caso de INEI por ejemplo en vez de tener 123 mil registros debería de haber un más de 32 millones de filas, lo que representaría a cada ciudadno del Perú.
+
+Un buen ejemplo de bases ordenadas son las bases provenientes de encuestas. Al tener este tipo de base se nos permitirá realizar un mejor uso de las funciones estadísticas.
+
+Para este caso crearemos nuestra propia base.
+
+```{r, message = FALSE}
+
+id <- seq(1:200)
+edad <- sample(c("0-15", "16-29", "30-44", "45-64"), 200, replace = TRUE)
+sexo <- sample(c("Hombre", "Mujer"), 200, replace = TRUE)
+departamento <- sample(c("Lima", "Arequipa", "Cusco", "Piura", "Trujillo"),
+                    200, replace = TRUE)
+peso <- sample(c("Debajo", "Regular", "Sobrepeso"), 200, replace = TRUE)
+salud <- sample(c("Mala", "Promedio", "Buena"), 200, replace = TRUE)
+encuesta <- data.frame(edad, sexo, departamento, peso, salud)
+
+```
+
+## Tabla Cruzada {.smaller}
+
+Haremos una tabla cruzada de frecuencias entre edad y sexo. Para ello utilizaremos el comando table. Luego usaremos la función prop.table para extraer los porcentajes y con ayuda del paquete xtable imprimiremos la tabla.
+
+```{r, message = FALSE, results='asis'}
+library(xtable)
+
+tabla_2 <- table(encuesta$edad, encuesta$sexo)
+print(xtable(tabla_2), type = "html")
+
+tabla_3 <- prop.table(tabla_2) 
+print(xtable(tabla_3), type = "html")
+```
+
+## Hagamos una regresión-Parte 1 {.smaller}
+
+Para realizar las correlaciones o regresiones es recomendable transformar las variables de interés en variables numéricas. Nuestras variables de interés son peso y salud y por ello, en primer lugar transformaremos dichas variables categóricas.
+
+```{r, message = FALSE}
+
+encuesta_transf <- encuesta |>
+  mutate(peso = if_else(peso == "Debajo", 1,
+                        if_else(peso == "Regular", 2, 3)),
+         salud = if_else(salud == "Mala", 1,
+                         if_else(salud == "Promedio", 2, 3)))
+
+encuesta_transf
+```
+
+## Hagamos una regresión-Parte 2 {.smaller}
+
+Ahora podremos trabajar las regresiones, pero primero hagamos una correlación.
+
+Los coeficientes de correlación van desde -1 hasta 1.
+
+Cómo se darán cuenta nos salió un coeficiente bajo.
+
+```{r}
+cor(encuesta_transf$peso, encuesta_transf$salud)
+```
+
+## Hagamos una regresión-Parte 3 {.smaller}
+
+Ahora para realizar una regresión, se debe de usar la siguiente fórmula, a la izquierda la variable dependiente y a la derecha la variable independiente. Con la función summary veremos los resultados.
+
+```{r, message = FALSE}
+modelo_1 <- lm(salud~peso, encuesta_transf)
+summary(modelo_1)
+```
