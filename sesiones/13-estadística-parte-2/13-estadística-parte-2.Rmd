@@ -1,0 +1,155 @@
+---
+title: "Funciones de Estadística Parte 2"
+author:
+- "Jorge Meneses y Paulo Peña"
+
+output:
+  ioslides_presentation:
+    highlight: default
+    widescreen: true
+    incremental: true
+    smaller: true
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+here::i_am("sesiones/13-estadística-parte-2/13-estadística-parte-2.Rmd")
+```
+
+## Funciones Estadísticas Parte 2
+
+En esta sesión revisaremos las siguientes funciones. Estas son funciones que son empleadas en la mayoría de investigaciones:
+
+-   Prueba de contraste de medias t-test
+
+-   Prueba de proporciones
+
+-   Prueba de correlación y sus gráficos
+
+## Prueba de contraste de medias
+
+El coeficiente t es un ratio entre la diferencia de medias entres dos muestras y el error stándar de ambas muestras, es decir, la varianza no explicada.
+
+Esta es una prueba fundamental cuando queremos analizar la diferencia de una variable cuantitatva entre dos muestras. La prueba-t nos ayuda a tener la probabilidad de equivocarnos al aceptar que haya una diferencia entre ambas muestras, lo que se conoce como el *p-value.*
+
+## Ejemplo - Prueba de contraste de medias {.smaller}
+
+Crearemos dos muestras artificiales para probar el contraste de medias.
+
+```{r, message = FALSE}
+
+# Primero simulemos la data
+id <- seq(1:200)
+set.seed(100) # para fijar los números aleatorios
+edad <- sample(c("16-29", "30-44"), 200, replace = TRUE)
+sexo <- sample(c("Hombre", "Mujer"), 200, replace = TRUE)
+peso <- sample(c(50.5:90.3), 200, replace = TRUE)
+altura <- sample(c(152:190), 200, replace = TRUE) |>
+  as.numeric()
+datos <- data.frame(edad, sexo, peso, altura)
+```
+
+```{r, message = FALSE}
+
+# Realicemos la prueba t
+prueba_1 <- t.test(peso ~ edad, data = datos)
+prueba_1
+```
+
+## Prueba de contraste de medias - Analizando los resultados {.smaller}
+
+```{r, message = FALSE}
+# Coeficiente t 
+prueba_1$statistic
+
+# Valor p, o probabilidad de Error Tipo I
+prueba_1$p.value
+
+# Intervalo de cofianza al 95%
+prueba_1$conf.int
+```
+
+## Prueba de Proporciones {.smaller}
+
+No todas las variables con las que trabajamos son númericas. Muchas veces solo tenemos frecuencias de variables categóricas las cuales también pueden ser sometidad a una hipótesis.
+
+Para eso existe la prueba de proporciones, nos da el Error Tipo I (p-value) entre dos la proporción de dos muestras.
+
+Es una prueba muy útila para hallar diferencias significativas entre grupos y reportarlas en nuestros trabajos.
+
+## Ejemplo Prueba de Proporciones {.smaller}
+
+Sigamos usando la base de datos que hemos creado. Haremos el contraste si la proporción de hombres es similar a la de mujeres. Utilizaremos al función "prop.test".
+
+```{r, message = FALSE, warning = FALSE}
+
+# primero separamos los grupos y contabilizamos la frecuencia total y las frecuencias de cada grupo
+
+library(dplyr)
+
+n_total <- nrow(datos) # frequencia total
+hombres <- nrow(filter(datos, sexo == "Hombre")) # frecuencia hombres
+mujeres <- nrow(filter(datos, sexo == "Mujer")) # frecuencia mujeres
+
+# ahora podemos realizar nuestra  prueba
+prueba_2 <- prop.test(c(hombres, mujeres), # los grupos a evaluar
+                      c(n_total, n_total)) # el n de la muestra
+
+```
+
+## Prueba de proporciones analizando resultados {.smaller}
+
+```{r, message = FALSE}
+
+# Coeficiente z 
+prueba_2$statistic
+
+# Valor p, o probabilidad de Error Tipo I
+prueba_2$p.value
+
+# Intervalo de cofianza al 95%
+prueba_2$conf.int
+
+```
+
+## Prueba de Correlaciones y Gráfico - Parte 1 {.smaller}
+
+En nuestra base tenemos dos medidas cuantitativas, peso y altura. Creemos dos variables nuevas y hagamos una prueba de correlación entre las cuatro variables.
+
+```{r, message = FALSE}
+
+# creemos niveles de glucosa y colesterol (ml)
+set.seed(100)
+glucosa <- sample(c(138.5:160), 200, replace = TRUE)
+colesterol <- sample(c(137.5:200), 200, replace = TRUE)
+
+# juntemos con nuestra base anterior
+datos_2 <- cbind(datos, glucosa, colesterol)
+
+datos_2
+```
+
+## Prueba de Correlaciones y Gráfico - Parte 2 {.smaller}
+
+Ahora realizaremos la prueba de correlación de nuestras cuatro variables y trataremos de graficarla.
+
+```{r, message = FALSE, warning = FALSE}
+
+library(corrplot) # para poder graficar
+prueba_cor <- cor(datos_2[,c(3:6)])
+
+# Imprimir nuestros resultados
+
+round(prueba_cor,2)
+```
+
+## Prueba de Correlaciones y Gráfico - Parte 3 {.smaller}
+
+```{r, message = FALSE, warning = FALSE, fig.height = 4}
+# Ahora hagamos el gráfico
+library(corrplot) # para poder graficar
+grafico <- corrplot(prueba_cor, method = "circle", title = "Gráfico de Correlaciones",
+                    mar = c(1,1,1,1),
+                    tl.cex = 0.7,
+                    cl.cex = 0.7,
+                    cl.align.text = "l")
+```

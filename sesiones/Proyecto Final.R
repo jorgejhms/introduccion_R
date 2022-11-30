@@ -13,3 +13,4 @@ data |>
   arrange(-sum)
   
 
+# Limpiar la base
