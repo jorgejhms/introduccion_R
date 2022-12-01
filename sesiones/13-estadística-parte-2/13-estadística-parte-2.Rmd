@@ -72,13 +72,13 @@ prueba_1$conf.int
 
 No todas las variables con las que trabajamos son númericas. Muchas veces solo tenemos frecuencias de variables categóricas las cuales también pueden ser sometidad a una hipótesis.
 
-Para eso existe la prueba de proporciones, nos da el Error Tipo I (p-value) entre dos la proporción de dos muestras.
+Para eso existe la prueba de proporciones, nos da el Error Tipo I (p-value) entre la frecuencia de dos muestras.
 
-Es una prueba muy útila para hallar diferencias significativas entre grupos y reportarlas en nuestros trabajos.
+Es una prueba muy útil para hallar diferencias significativas entre grupos y reportarlas en nuestros trabajos.
 
 ## Ejemplo Prueba de Proporciones {.smaller}
 
-Sigamos usando la base de datos que hemos creado. Haremos el contraste si la proporción de hombres es similar a la de mujeres. Utilizaremos al función "prop.test".
+Sigamos usando la base de datos que hemos creado. Haremos el contraste si la proporción de hombres es similar a la de mujeres. Utilizaremos la función "prop.test".
 
 ```{r, message = FALSE, warning = FALSE}
 

@@ -12,7 +12,7 @@ library(janitor)
 
 
 # 3. La direción url contiene una base en csv delimitada por comas.
-# Ha que abrir el archivo csv y guardar el objeto como "data_salud"
+# Hay que abrir el archivo csv y guardar el objeto como "data_salud"
 
 
 #4. Revisar como están escritos los nombres de la base. Limpiar los nombres.
@@ -22,8 +22,8 @@ library(janitor)
 
 
 #5. Ahora con la base limpia empecemos a crear tablas resumen.
-# Saquemos el número de atendidos por trastornos dentro de la base y quedemonos
-# con el top 5. A esta tabla llamemosla: tabla_diagnostico
+# Saquemos el número de atendidos por diagnosticos dentro de la base y quedemonos
+# con el top 5. A esta tabla llamemos la: tabla_diagnostico
 
 
 # 6. Calculemos el porcentaje de personas atendidas por cada uno
@@ -32,14 +32,14 @@ library(janitor)
 # Se realizará una operación matemática entre la suma de diagnosticos atendidos
 # entre el número total de atendidos. El número total de atendido lo extraemos
 # de la base dat_salud_limpia. Sobreescribimos la tabla_trastorno
-# la nueva variable solo debe tener dos decimales
+# la nueva variable solo debe tener dos decimales (agregarla a la tabla)
 
 
 # 7a. Este ejercicio lo veremos en dos partes. Veamos por sexo si hay diferencias por género entre el número de atentidos
 # por el diagnostico con mayor porcentaje de atendidos.
 # Para ello crearemos diferentes vectores.
-# Luego calcularemos el total de hombres y mujeres atendidos por separado
-# Acto seguido, calculremos el total de hombres y mujeres atendidas por 
+# Calcularemos el total de hombres y el total de mujeres atendidos por separado
+# Acto seguido, calcularemos el total de hombres y mujeres atendidas por 
 # el diganostico número 1 en el ranking.
 # Cada vector calculado le asignaremos un nombre a criterio del estudiante,
 
